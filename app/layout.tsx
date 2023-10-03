@@ -13,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html className="font-display">
-      <body>{children}</body>
+      <body>
+        <div>HEADER</div>
+        {children}
+        <div>FOOTER</div>
+      </body>
     </html>
   )
 }

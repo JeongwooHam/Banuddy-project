@@ -3,7 +3,7 @@ import '../../app/globals.css'
 import ScrollToTop from './scrollToTop'
 
 const meta: Meta<typeof ScrollToTop> = {
-  title: 'Components/Button',
+  title: 'Components/ScrollToTop',
   component: ScrollToTop,
   tags: ['autodocs'],
   argTypes: {

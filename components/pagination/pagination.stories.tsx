@@ -3,7 +3,7 @@ import '../../app/globals.css'
 import Pagination from './pagination'
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Components/Button',
+  title: 'Components/Pagination',
   component: Pagination,
   tags: ['autodocs'],
   argTypes: {

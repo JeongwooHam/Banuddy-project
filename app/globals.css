@@ -2,66 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-100: theme(colors.primary.100);
+  --primary-200: theme(colors.primary.200);
+  --primary-300: theme(colors.primary.300);
+  --gray-100: theme(colors.gray.100);
+  --gray-200: theme(colors.gray.200);
+  --gray-300: theme(colors.gray.300);
+  --gray-400: theme(colors.gray.400);
+  --subColor-100: theme(colors.subColor.100);
+  --subColor-200: theme(colors.subColor.200);
+  --brownColor-100: theme(colors.brown.100);
+  --brownColor-100: theme(colors.brown.200);
+  --font-100: theme(colors.font.100);
+  --font-200: theme(colors.font.200);
+  --font-300: theme(colors.font.300);
+  --font-error: theme(colors.font.error);
+  --font-black: theme(colors.font.black);
+  --size-micro: theme(fontSize.micro);
+  --size-es: theme(fontSize.es);
+  --size-xs: theme(fontSize.xs);
+  --size-sm: theme(fontSize.sm);
+  --size-base: theme(fontSize.base);
+  --size-md: theme(fontSize.md);
+  --size-big: theme(fontSize.big);
+  --size-lg: theme(fontSize.lg);
+  --size-xl: theme(fontSize.xl);
+  --weight-light: theme(fontWeight.light);
+  --weight-regular: theme(fontWeight.regular);
+  --weight-bold: theme(fontWeight.bold);
+  --weight-bolder: theme(fontWeight.bolder);
+}
+
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+  html {
+    @apply overflow-x-hidden bg-gray-100;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  body {
+    -ms-overflow-style: none;
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  :focus-visible {
+    outline: none;
+  }
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  .select-none {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge*/
+    user-select: none;
+  }
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  a,
+  input,
+  button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    @apply select-none touch-manipulation;
+  }
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+  svg,
+  img {
+    @apply pointer-events-none select-none;
   }
 }

@@ -3,7 +3,7 @@ import '../../app/globals.css'
 import Input from './input'
 
 const meta: Meta<typeof Input> = {
-  title: 'Components/Button',
+  title: 'Components/Input',
   component: Input,
   tags: ['autodocs'],
   argTypes: {

@@ -3,7 +3,7 @@ import '../../app/globals.css'
 import Select from './select'
 
 const meta: Meta<typeof Select> = {
-  title: 'Components/Button',
+  title: 'Components/Select',
   component: Select,
   tags: ['autodocs'],
   argTypes: {
