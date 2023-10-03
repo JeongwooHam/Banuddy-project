@@ -1,75 +1,95 @@
+const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
+      sm: { max: '365px' },
+      md: '750px',
+    },
+    ...colors,
+    gray: {
+      10: '#FFFFFF',
+      20: '#EDEDED',
+      30: '#DBDBDB',
+      40: '#A6A6A6',
+      50: '#555555',
+      60: '#444444',
+      70: '#222222',
+      80: '#000000',
+    },
+    primary: {
+      10: '#D3FF52',
+    },
+    blue: {
+      50: '#3234FB',
     },
     extend: {
-      colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
+      fontSize: {
+        '8px': '8px',
+        '9px': '9px',
+        '10px': '10px',
+        '11px': '11px',
+        '12px': '12px',
+        '13px': '13px',
+        '14px': '14px',
+        '15px': '15px',
+        '16px': '16px',
+        '17px': '17px',
+        '18px': '18px',
+        '19px': '19px',
+        '20px': '20px',
+        '21px': '21px',
+        '22px': '22px',
+        '23px': '23px',
+        '24px': '24px',
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+      spacing: {
+        '2px': '2px',
+        '3px': '3px',
+        '4px': '4px',
+        '5px': '5px',
+        '6px': '6px',
+        '7px': '7px',
+        '8px': '8px',
+        '9px': '9px',
+        '10px': '10px',
+        '11px': '11px',
+        '12px': '12px',
+        '13px': '13px',
+        '14px': '14px',
+        '15px': '15px',
+        '16px': '16px',
+        '17px': '17px',
+        '18px': '18px',
+        '19px': '19px',
+        '20px': '20px',
+        '21px': '21px',
+        '22px': '22px',
+        '23px': '23px',
+        '24px': '24px',
       },
-      keyframes: {
-        'accordion-down': {
-          from: { height: 0 },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: 0 },
-        },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-      },
+    },
+    fontFamily: {
+      'gilroy-regular': ['Gilroy-Regular', 'sans-serif'],
+      'gilroy-medium': ['Gilroy-Medium', 'sans-serif'],
+      'gilroy-bold': ['Gilroy-Bold', 'sans-serif'],
+      'gilroy-heavy': ['Gilroy-Heavy', 'sans-serif'],
+      'gilroy-light': ['Gilroy-Light', 'sans-serif'],
+      suit: ['"SUIT Variable"', 'sans-serif'],
+      sans: ['"SUIT Variable"', ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [require('tailwindcss-animate')],

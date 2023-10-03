@@ -1,4 +1,5 @@
 import React from 'react'
+import Styles from './styles'
 
 export interface ButtonProps {
   label: string
