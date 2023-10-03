@@ -5,6 +5,9 @@ const config: StorybookConfig = {
     '../components/**/*.mdx',
     '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
+  features: {
+    storyStoreV7: false, // 👈 Opt out of on-demand story loading
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
