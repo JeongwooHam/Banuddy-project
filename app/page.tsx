@@ -8,7 +8,7 @@ import {
 export default function Home() {
   return (
     <>
-      <h2>Welcome to Banuddy!</h2>
+      <div className="w-fuill flex flex-col ">Welcome to Banuddy!</div>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Accordion UI입니다.</AccordionTrigger>
