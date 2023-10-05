@@ -12,7 +12,7 @@ const AnimalPolaroid: React.FC<animalProp> = ({ name }) => {
         <p className="w-[40px] ml-[5px] text-center">입양상태</p>
       </div>
       <div className="flex mt-[30px]">
-        <span className="mb-[-17px]">
+        <span>
           <Image src={Cat} alt="cat" />
         </span>
         <div className="text-[24px] ml-[30px] text-center">

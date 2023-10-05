@@ -1,14 +1,14 @@
 import { useRouter } from 'next/navigation'
 import AnimalDetail from './_components/AnimalDetail'
-import AnimalInfo from './_components/AnimalInfo'
 import AnimalPolaroid from './_components/AnimalPolaroid'
+import AnimalInfoText from './_components/AnimalInfoText'
 
 const Detail: React.FC = () => {
   return (
     <div>
       <div className="flex justify-between w-content m-center mb-[100px]">
         <AnimalPolaroid name="뚜비" />
-        <AnimalInfo />
+        <AnimalInfoText />
       </div>
       <AnimalDetail type="dog" />
     </div>
