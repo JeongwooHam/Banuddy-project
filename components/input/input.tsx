@@ -1,22 +1,15 @@
 import React from 'react'
 import Styles from './styles'
+import { Input } from '@/components/ui/input'
 
 export interface InputProps {
-  label: string
-  onClick: () => void
-  disabled?: boolean
+  placeholder: string
+  type: string
+  style?: string
 }
 
-const Input: React.FC<InputProps> = ({ label, onClick, disabled }) => {
-  return (
-    <button
-      onClick={onClick}
-      className={`${Styles.fontSize} ${Styles.bg}`}
-      disabled={disabled}
-    >
-      {label}
-    </button>
-  )
+const CustomInput: React.FC<InputProps> = ({ placeholder, type, style }) => {
+  return <Input type={type} className={style} placeholder={placeholder} />
 }
 
-export default Input
+export default CustomInput

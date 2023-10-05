@@ -78,6 +78,12 @@ module.exports = {
         intro: ['Liu Jian Mao Cao', 'cursive'],
         quotes: ['Rosarivo', 'serif'],
       },
+      width: {
+        content: '1030px',
+      },
+      margin: {
+        center: '0 auto',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
