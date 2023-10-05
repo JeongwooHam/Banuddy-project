@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import './form.css'
 import Head from 'next/head'
 
@@ -19,22 +20,25 @@ export default function Login() {
             <img src="/assets/Banuddy.png" alt="Logo" className=" h-10 " />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-3">
             <input
               type="text"
               placeholder="이메일을 입력해주세요"
               style={{ width: '250px', height: '40px' }}
-              className="text-xs	border border-gray-200 rounded-3xl px-3 py-2 mb-2"
+              className="input-default"
             />
             <input
               type="password"
               placeholder="비밀번호를 입력해주세요"
-              className="text-xs	border border-gray-200 rounded-3xl px-3 py-2 mb-4"
+              className="input-default"
             />
-            <button className="text-sm font-bold bg-orange-500 text-white rounded-3xl px-3 py-2">
-              로그인하기
-            </button>
-            <button className="text-sm">회원가입 하러가기</button>
+            <button className="submit-btn">로그인하기</button>
+
+            <Link href="/signup" className="text-center">
+              <button className="text-sm font-bold py-3">
+                회원가입 하러가기
+              </button>
+            </Link>
           </div>
         </div>
       </div>

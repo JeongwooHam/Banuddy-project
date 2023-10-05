@@ -1,5 +1,18 @@
-.name-input {
-  outline: none;
-  border: 10px solid var(--primary-200);
-  font-size: var(--size-micro);
+.input-default {
+  border: 1px solid var(--gray-300);
+  border-radius: 30px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: var(--size-xs);
+}
+
+.submit-btn {
+  background-color: var(--primary-300);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-bold);
+  border: 1px solid var(--gray-200);
+  border-radius: 30px;
+  padding: 7px 7px;
 }

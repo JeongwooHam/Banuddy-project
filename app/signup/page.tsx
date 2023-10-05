@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import './style.css'
+import Link from 'next/link'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력해주세요'),
@@ -117,7 +118,9 @@ export default function SignUp() {
           <button type="submit" className="submit-btn">
             가입하기
           </button>
-          <button className="text-xs font-bold"> 로그인 하러가기</button>
+          <Link href="/login" className="text-center">
+            <button className="text-sm font-bold py-3">로그인 하러가기</button>
+          </Link>
         </form>
       </div>
     </div>
