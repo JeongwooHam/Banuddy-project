@@ -5,18 +5,18 @@ type ButtonTypes = {
   label: string
   outlined?: boolean
   onClick: () => void
-  style?: string
+  buttonStyle?: string
 }
 
 export const Button: FC<ButtonTypes> = ({
   onClick,
   label = 'btnText',
   outlined,
-  style,
+  buttonStyle,
 }) => {
   const isOutlined = outlined ? Styles.OUTLINED_BUTTON : Styles.CONTAINED_BUTTON
   return (
-    <button onClick={onClick} className={isOutlined + style}>
+    <button onClick={onClick} className={isOutlined + buttonStyle}>
       <span>{label}</span>
     </button>
   )
