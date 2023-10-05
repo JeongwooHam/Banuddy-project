@@ -5,8 +5,8 @@ import AnimalList from '../_components/AnimalList'
 const AdoptNational: React.FC = () => {
   return (
     <>
-      <Title />
-      <AnimalFilter />
+      <Title isSeoul={false} />
+      <AnimalFilter isSeoul={false} />
       <AnimalList />
     </>
   )

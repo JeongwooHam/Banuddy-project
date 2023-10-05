@@ -1,10 +1,20 @@
+'use client'
+
 import OneCard from '@/components/card/card'
 import Image from 'next/image'
 import SampleImage from '/public/images/sampleImage.png'
+import { useRouter } from 'next/navigation'
 
-const OneAnimal: React.FC = () => {
+interface AnimalProps {
+  id: number
+  // API 호출 시 추가 예정
+}
+
+const OneAnimal: React.FC<AnimalProps> = ({ id }) => {
+  const router = useRouter()
+
   const boxContent = (
-    <div>
+    <div onClick={() => router.push(`/adopt/national`)}>
       <div>
         <Image src={SampleImage} alt="sample" />
       </div>

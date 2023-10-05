@@ -5,8 +5,8 @@ import AnimalList from '../_components/AnimalList'
 const AdoptSeoul: React.FC = () => {
   return (
     <div className="bg-primary-100 pb-[60px]">
-      <Title />
-      <AnimalFilter />
+      <Title isSeoul={true} />
+      <AnimalFilter isSeoul={true} />
       <AnimalList />
     </div>
   )
