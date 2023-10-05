@@ -1,21 +1,17 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import AnimalDetail from './_components/AnimalDetail'
 import AnimalInfo from './_components/AnimalInfo'
-import ImageSlide from './_components/ImageSlide'
+import AnimalPolaroid from './_components/AnimalPolaroid'
 
 const Detail: React.FC = () => {
-  const router = useRouter()
-  const { id } = router.query
-
   return (
-    <>
-      <div>{id}</div>
-      <div>
-        <ImageSlide />
+    <div>
+      <div className="flex justify-between w-content m-center mb-[100px]">
+        <AnimalPolaroid name="뚜비" />
         <AnimalInfo />
       </div>
-      <AnimalDetail />
-    </>
+      <AnimalDetail type="dog" />
+    </div>
   )
 }
 

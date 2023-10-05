@@ -14,7 +14,7 @@ const OneAnimal: React.FC<AnimalProps> = ({ id }) => {
   const router = useRouter()
 
   const boxContent = (
-    <div onClick={() => router.push(`/adopt/national`)}>
+    <div onClick={() => router.push(`/adopt/${id + ''}`)}>
       <div>
         <Image src={SampleImage} alt="sample" />
       </div>
