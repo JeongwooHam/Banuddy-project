@@ -1,3 +1,5 @@
+import Footer from '@/components/footer/footer'
+import Header from '../components/header/header'
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -14,9 +16,9 @@ export default function RootLayout({
   return (
     <html className="font-display">
       <body>
-        <div>HEADER</div>
+        <Header isLogin={true} />
         {children}
-        <div>FOOTER</div>
+        <Footer />
       </body>
     </html>
   )
