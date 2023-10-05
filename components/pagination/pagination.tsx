@@ -36,8 +36,8 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
             <li key={page}>
               <button
                 onClick={() => handlePageClick(page)}
-                className={`px-3 py-2rounded-full ${
-                  activePage === page ? 'bg-pr imary-200' : 'bg-transparent/[0]'
+                className={`px-3 py-2 rounded-full ${
+                  activePage === page ? 'bg-primary-200' : 'bg-transparent/[0]'
                 }`}
               >
                 {page}
