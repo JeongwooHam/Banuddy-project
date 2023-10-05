@@ -1,12 +1,17 @@
+import OneCard from '@/components/card/card'
+
 const OneAnimal: React.FC = () => {
+  const boxContent = (
+    <div>
+      <div>이미지</div>
+      <div>이름</div>
+      <div>설명</div>
+    </div>
+  )
+
   return (
     <>
-      <div>
-        <div>이미지</div>
-        <div>상태</div>
-        <div>이름</div>
-        <div>특징</div>
-      </div>
+      <OneCard boxStyle="w-56 h-auto rounded" content={boxContent} />
     </>
   )
 }

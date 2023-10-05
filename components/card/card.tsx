@@ -1,22 +1,19 @@
 import React from 'react'
 import Styles from './styles'
+import { Card, CardContent } from '@/components/ui/card'
 
 export interface CardProps {
-  label: string
-  onClick: () => void
-  disabled?: boolean
+  content?: React.ReactNode
+  onClick?: () => void
+  boxStyle?: string
 }
 
-const Card: React.FC<CardProps> = ({ label, onClick, disabled }) => {
+const OneCard: React.FC<CardProps> = ({ content, onClick, boxStyle }) => {
   return (
-    <button
-      onClick={onClick}
-      className={`${Styles.fontSize.exlarge} ${Styles.bgColor.brown}`}
-      disabled={disabled}
-    >
-      {label}
-    </button>
+    <Card className={boxStyle}>
+      <CardContent>{content}</CardContent>
+    </Card>
   )
 }
 
-export default Card
+export default OneCard
