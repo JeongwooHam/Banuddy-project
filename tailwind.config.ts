@@ -68,9 +68,11 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-    },
-    fontFamily: {
-      display: `'Noto Sans KR', sans-serif`,
+      fontFamily: {
+        display: `'Noto Sans KR', sans-serif`,
+        script: ['Nanum Brush Script', 'cursive'],
+        intro: `'Liu Jian Mao Cao', cursive;`,
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
