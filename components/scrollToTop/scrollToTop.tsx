@@ -1,21 +1,29 @@
+'use client'
+
 import React from 'react'
-import Styles from './styles'
+import ScrollPaw from '/public/icons/scroll-paw.svg'
+import Image from 'next/image'
 
-export interface ScrollProps {
-  label: string
-  onClick: () => void
-  disabled?: boolean
-}
+const ScrollToTop: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
 
-const ScrollToTop: React.FC<ScrollProps> = ({ label, onClick, disabled }) => {
   return (
-    <button
-      onClick={onClick}
-      className={`${Styles.fontSize} ${Styles.bg}`}
-      disabled={disabled}
-    >
-      {label}
-    </button>
+    <div className="fixed right-[5%] bottom-[5%] z-10">
+      <button
+        className="w-[100px] h-[100px] font-bold text-[15px] border-[2px] border-black rounded-full outline-none cursor-pointer"
+        onClick={scrollToTop}
+      >
+        <div>TOP</div>
+        <div>
+          <Image src={ScrollPaw} alt="paw" className="m-center" />
+        </div>
+      </button>
+    </div>
   )
 }
 
