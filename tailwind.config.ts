@@ -37,6 +37,10 @@ module.exports = {
         100: `#F0C6AF`,
         200: `#D68C63`,
       },
+      blue: {
+        100: `#EAEBF0`,
+        200: `#A8B3E7`,
+      },
       font: {
         100: '#FFFFFF',
         200: '#646F7C',
@@ -68,9 +72,18 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-    },
-    fontFamily: {
-      display: `'Noto Sans KR', sans-serif`,
+      fontFamily: {
+        display: `'Noto Sans KR', sans-serif`,
+        script: ['Nanum Brush Script', 'cursive'],
+        intro: ['Liu Jian Mao Cao', 'cursive'],
+        quotes: ['Rosarivo', 'serif'],
+      },
+      width: {
+        content: '1030px',
+      },
+      margin: {
+        center: '0 auto',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

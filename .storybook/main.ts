@@ -6,7 +6,7 @@ const config: StorybookConfig = {
     '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   features: {
-    storyStoreV7: false, // 👈 Opt out of on-demand story loading
+    storyStoreV7: false,
   },
   addons: [
     '@storybook/addon-links',

@@ -1,7 +1,22 @@
-export default function adopt() {
+import { useRouter } from 'next/router'
+import AnimalDetail from './_components/AnimalDetail'
+import AnimalInfo from './_components/AnimalInfo'
+import ImageSlide from './_components/ImageSlide'
+
+const Detail: React.FC = () => {
+  const router = useRouter()
+  const { id } = router.query
+
   return (
     <>
-      <h1>입양 페이지입니다 id 1</h1>
+      <div>{id}</div>
+      <div>
+        <ImageSlide />
+        <AnimalInfo />
+      </div>
+      <AnimalDetail />
     </>
   )
 }
+
+export default Detail
