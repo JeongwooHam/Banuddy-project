@@ -19,7 +19,7 @@ export default function MyPageLayout({
           objectPosition="center"
         />
       </div>
-      <div className="flex z-100 absolute h-[90%] mt-[40px] bg-white rounded left-[22%] pt-[50px]">
+      <div className="flex z-100 absolute h-[90%] mt-[40px] bg-white rounded left-[22%] pt-[50px] ">
         <div className="z-1 h-full">
           <NavBar />
         </div>
