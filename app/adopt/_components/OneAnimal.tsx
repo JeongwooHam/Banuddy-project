@@ -6,15 +6,15 @@ import SampleImage from '/public/images/sampleImage.png'
 import { useRouter } from 'next/navigation'
 
 interface AnimalProps {
-  id: number
+  animalId: number
   // API 호출 시 추가 예정
 }
 
-const OneAnimal: React.FC<AnimalProps> = ({ id }) => {
+const OneAnimal: React.FC<AnimalProps> = ({ animalId }) => {
   const router = useRouter()
 
   const boxContent = (
-    <div onClick={() => router.push(`/adopt/${id + ''}`)}>
+    <div onClick={() => router.push(`/adopt/${animalId + ''}`)}>
       <div>
         <Image src={SampleImage} alt="sample" />
       </div>

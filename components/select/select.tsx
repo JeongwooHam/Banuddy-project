@@ -16,7 +16,7 @@ const CommonSelect: React.FC<SelectProps> = ({ selectValue }) => {
     return (
       <Select>
         <SelectTrigger className="w-[180px] bg-white">
-          <SelectValue placeholder="전체" />
+          <SelectValue placeholder="선택" />
         </SelectTrigger>
         <SelectContent className="bg-white">
           {selectValue.map((val) => (

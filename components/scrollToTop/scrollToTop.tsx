@@ -15,7 +15,7 @@ const ScrollToTop: React.FC = () => {
   return (
     <div className="fixed right-[5%] bottom-[5%] z-10">
       <button
-        className="w-[100px] h-[100px] font-bold text-[15px] border-[2px] border-black rounded-full outline-none cursor-pointer"
+        className="w-[100px] h-[100px] font-bold text-[15px] border-[2px] border-black rounded-full outline-none cursor-pointer bg-white"
         onClick={scrollToTop}
       >
         <div>TOP</div>
