@@ -38,7 +38,9 @@ const ShelterList: React.FC = () => {
 
   return (
     <div className="w-content m-auto mt-[50px]">
-      <div>전체 n 건</div>
+      <div className="font-bold mb-10 text-[24px]">
+        전체 <span className="text-brown-200">{8}</span>건
+      </div>
       {shelterArray.map(({ title, address, operationTime, phoneNumber }) => (
         <OneShelter
           title={title}

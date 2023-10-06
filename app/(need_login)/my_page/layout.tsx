@@ -9,7 +9,7 @@ export default function MyPageLayout({
   asideContent: React.ReactNode
 }) {
   return (
-    <div className="relative min-h-[900px]">
+    <div className="relative min-h-[1000px]">
       <div className="absolute inset-0">
         <Image
           src={background}
@@ -23,7 +23,7 @@ export default function MyPageLayout({
         <div className="z-1 h-full">
           <NavBar />
         </div>
-        <div className="z-100  w-[860px]">{children}</div>
+        <div className="z-100 w-[860px] pl-[30px]">{children}</div>
       </div>
     </div>
   )
