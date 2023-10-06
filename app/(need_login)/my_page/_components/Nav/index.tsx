@@ -3,12 +3,12 @@ import UserInfo from './UserInfo'
 
 const NavBar: React.FC = () => {
   return (
-    <>
-      <div>
+    <nav>
+      <ul>
         <UserInfo />
         <NavTabs />
-      </div>
-    </>
+      </ul>
+    </nav>
   )
 }
 

@@ -61,6 +61,10 @@
     user-select: none;
   }
 
+  li {
+    list-style: none;
+  }
+
   a,
   input,
   button {
