@@ -17,7 +17,7 @@ const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3500,
 
     nextArrow: (
       <div>

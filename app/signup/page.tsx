@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -8,6 +8,7 @@ import './style.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import Banner from '/public/assets/Banuddy.png'
+import { useRouter } from 'next/navigation'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력해주세요'),
@@ -32,13 +33,29 @@ interface FormData {
 }
 
 export default function SignUp() {
-  const [iconCounts, setIconCounts] = useState([0, 0, 0, 0, 0])
+  const [iconColors, setIconColors] = useState([
+    'bg-gray-200',
+    'bg-gray-200',
+    'bg-gray-200',
+    'bg-gray-200',
+    'bg-gray-200',
+  ])
+  const [inputValues, setInputValues] = useState(['', '', '', '', ''])
+  const router = useRouter()
+
+  useEffect(() => {
+    const newIconColors = inputValues.map((value) =>
+      value.length > 0 ? 'bg-yellow-500' : 'bg-gray-200',
+    )
+    setIconColors(newIconColors)
+  }, [inputValues])
 
   const handleInputChange = (index: any, value: any) => {
-    const newIconCounts = [...iconCounts]
-    newIconCounts[index] = value.length
-    setIconCounts(newIconCounts)
+    const newInputValues = [...inputValues]
+    newInputValues[index] = value
+    setInputValues(newInputValues)
   }
+
   const {
     register,
     handleSubmit,
@@ -49,6 +66,15 @@ export default function SignUp() {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log('Form submitted:', data)
+    if (
+      !errors.name &&
+      !errors.email &&
+      !errors.password &&
+      !errors.confirmPassword &&
+      !errors.phoneNumber
+    ) {
+      router.push('/main')
+    }
   }
 
   return (
@@ -57,18 +83,13 @@ export default function SignUp() {
         <Image src={Banner} alt="Logo" className=" w-full h-10 " />
       </div>
       <div className="flex justify-center space-x-4">
-        {iconCounts.map((count, index) => (
-          <div
-            key={index}
-            className={`w-16 h-16 bg-gray-200 square-full ${
-              count > 0 ? 'bg-blue-500' : ''
-            }`}
-          ></div>
+        {iconColors.map((color, index) => (
+          <div key={index} className={`w-16 h-16 square-full ${color}`}></div>
         ))}
       </div>
 
       <div className="form">
-        <h1 className="text-2xl font-bold mb-4 pb-4	">회원가입 페이지입니다</h1>
+        <h1 className="text-4xl font-bold mb-4 pb-4	">회원가입</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-4 w-1/2 "

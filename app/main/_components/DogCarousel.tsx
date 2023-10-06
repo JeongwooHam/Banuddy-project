@@ -17,7 +17,7 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
 
     nextArrow: (
       <div>
@@ -32,7 +32,7 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
   }
 
   return (
-    <div className="w-3/4 z-50">
+    <div className="w-full">
       <Slider {...sliderSettings}>
         {content.map((slideContent: any, index: number | string) => (
           <div key={index}>

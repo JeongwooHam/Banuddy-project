@@ -4,6 +4,7 @@ import ScrollButton from './_component/ScrollToMain'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import introImg from '/public/images/intro1.png'
 
 export default function Landing() {
   return (
@@ -11,7 +12,7 @@ export default function Landing() {
       <div className="flex flex-col justify-center items-center h-screen">
         <div className="relative w-full h-full overflow-hidden">
           <Image
-            src="/images/intro1.png"
+            src={introImg}
             alt="Landing Page Image"
             className="object-cover w-full h-full"
           />
