@@ -5,12 +5,14 @@ import BannerAd from './_components/Banner'
 import DogCarousel from './_components/DogCarousel'
 import CatCarousel from './_components/CatCarousel'
 import './style.css'
+import OneAnimal from '../adopt/_components/OneAnimal'
 
 const Main: React.FC = () => {
+  const animalComponents = Array(8).fill(<OneAnimal />)
+
   return (
     <>
       <div className="container">
-        {/* Navbar */}
         <nav className="bg-gray-200 p-4">
           <div className="flex justify-between items-center">nav bar</div>
         </nav>
@@ -19,11 +21,12 @@ const Main: React.FC = () => {
           <BannerAd />
         </div>
 
-        {/* Pet Intro Section */}
         <div className="w-full flex flex-col justify-center items-center">
-          <div className="w-full ">
-            <DogCarousel />
-            <CatCarousel />
+          <div className="w-full h-10 bg-gray ">
+            <div className="dogCarousel">
+              <DogCarousel content={animalComponents} />
+            </div>
+            <CatCarousel content={animalComponents} />
           </div>
         </div>
 

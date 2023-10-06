@@ -1,22 +1,30 @@
 import React from 'react'
-import Styles from './styles'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export interface SelectProps {
-  label: string
-  onClick: () => void
-  disabled?: boolean
+  selectValue: string[]
 }
 
-const Select: React.FC<SelectProps> = ({ label, onClick, disabled }) => {
-  return (
-    <select
-      onClick={onClick}
-      className={`${Styles.fontSize} ${Styles.bg}`}
-      disabled={disabled}
-    >
-      {label}
-    </select>
-  )
+const CommonSelect: React.FC<SelectProps> = ({ selectValue }) => {
+  if (selectValue)
+    return (
+      <Select>
+        <SelectTrigger className="w-[180px] bg-white">
+          <SelectValue placeholder="전체" />
+        </SelectTrigger>
+        <SelectContent className="bg-white">
+          {selectValue.map((val) => (
+            <SelectItem value={val}>{val}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    )
 }
 
-export default Select
+export default CommonSelect

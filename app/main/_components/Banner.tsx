@@ -1,6 +1,7 @@
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import Image from 'next/image'
 
 const BannerAd = () => {
   const sliderSettings = {
@@ -19,13 +20,13 @@ const BannerAd = () => {
       <div className="w-full">
         <Slider {...sliderSettings}>
           <div>
-            <img src="/images/banner.png" alt="banuddy introduction" />
+            <Image src="/images/banner.png" alt="banuddy introduction" />
           </div>
           <div>
-            <img src="/images/banner.png" alt="banuddy introduction" />
+            <Image src="/images/banner.png" alt="banuddy introduction" />
           </div>
           <div>
-            <img src="/images/banner.png" alt="banuddy introduction" />
+            <Image src="/images/banner.png" alt="banuddy introduction" />
           </div>
         </Slider>
       </div>

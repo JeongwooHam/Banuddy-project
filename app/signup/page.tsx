@@ -1,13 +1,13 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { SyntheticEvent } from 'react'
 import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import './style.css'
 import Link from 'next/link'
+import Image from 'next/image'
+import Banner from '/public/assets/Banuddy.png'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력해주세요'),
@@ -54,7 +54,7 @@ export default function SignUp() {
   return (
     <div className="container">
       <div className="py-6">
-        <img src="/assets/Banuddy.png" alt="Logo" className=" h-10 " />
+        <Image src={Banner} alt="Logo" className=" w-full h-10 " />
       </div>
       <div className="flex justify-center space-x-4">
         {iconCounts.map((count, index) => (
@@ -67,7 +67,7 @@ export default function SignUp() {
         ))}
       </div>
 
-      <div className="flex flex-col items-center justify-center w-1/2 min-w-[500px] text-center mt-8 border border-gray-200 rounded-2xl py-5">
+      <div className="form">
         <h1 className="text-2xl font-bold mb-4 pb-4	">회원가입 페이지입니다</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -78,43 +78,57 @@ export default function SignUp() {
             placeholder="이름"
             {...register('name')}
             onChange={(e) => handleInputChange(0, e.target.value)}
-            className="input-default"
+            className="input-signup icon-input"
           />
-          {errors.name && <span>{errors.name.message}</span>}
+          {errors.name && (
+            <span className="input-error-message">{errors.name.message}</span>
+          )}
           <input
             type="email"
             placeholder="이메일"
             {...register('email')}
             onChange={(e) => handleInputChange(1, e.target.value)}
-            className="input-default"
+            className="input-signup icon-input"
           />
-          {errors.email && <span>{errors.email.message}</span>}
+          {errors.email && (
+            <span className="input-error-message">{errors.email.message}</span>
+          )}
           <input
             type="password"
             placeholder="비밀번호"
             {...register('password')}
             onChange={(e) => handleInputChange(2, e.target.value)}
-            className="input-default"
+            className="input-signup icon-input"
           />
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.password && (
+            <span className="input-error-message">
+              {errors.password.message}
+            </span>
+          )}
           <input
             type="password"
             placeholder="비밀번호 확인"
             {...register('confirmPassword')}
             onChange={(e) => handleInputChange(3, e.target.value)}
-            className="input-default"
+            className="input-signup icon-input"
           />
           {errors.confirmPassword && (
-            <span>{errors.confirmPassword.message}</span>
+            <span className="input-error-message">
+              {errors.confirmPassword.message}
+            </span>
           )}
           <input
             type="text"
             placeholder="휴대폰번호"
             {...register('phoneNumber')}
             onChange={(e) => handleInputChange(4, e.target.value)}
-            className="input-default"
+            className="input-signup icon-input"
           />
-          {errors.phoneNumber && <span>{errors.phoneNumber.message}</span>}
+          {errors.phoneNumber && (
+            <span className="input-error-message">
+              {errors.phoneNumber.message}
+            </span>
+          )}
           <button type="submit" className="submit-btn">
             가입하기
           </button>

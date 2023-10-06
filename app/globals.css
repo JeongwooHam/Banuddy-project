@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&family=Nanum+Brush+Script&family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Rosarivo&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
   --subColor-100: theme(colors.subColor.100);
   --subColor-200: theme(colors.subColor.200);
   --brownColor-100: theme(colors.brown.100);
-  --brownColor-100: theme(colors.brown.200);
+  --brownColor-200: theme(colors.brown.200);
   --font-100: theme(colors.font.100);
   --font-200: theme(colors.font.200);
   --font-300: theme(colors.font.300);

@@ -24,3 +24,7 @@
   border-radius: 30px;
   padding: 7px 7px;
 }
+
+.dogCarousel {
+  background-image: url('/images/dogSlide.png');
+}

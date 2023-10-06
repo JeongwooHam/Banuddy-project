@@ -1,35 +1,48 @@
+import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import Image from 'next/image'
 
-const CatCarousel = () => {
+interface CatCarouselProps {
+  content: React.ReactNode[]
+}
+
+const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 1500,
     arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     autoplay: true,
     autoplaySpeed: 2000,
+
+    nextArrow: (
+      <div>
+        <Image src="/icons/arrow-top-right.svg" alt="arrow-right" />
+      </div>
+    ),
+    prevArrow: (
+      <div>
+        <Image src="/icons/arrow-left.svg" alt="arrow-left" />
+      </div>
+    ),
   }
 
   return (
-    <>
-      <div className="w-full">
-        <Slider {...sliderSettings}>
-          <div>
-            <img src="/images/banner.png" alt="banuddy introduction" />
+    <div className="w-full">
+      <Slider {...sliderSettings}>
+        {content.map((slideContent: any, index: number | string) => (
+          <div key={index}>
+            <div className="w-56 h-auto rounded bg-white pt-[25px] border-slate-200">
+              {slideContent}
+            </div>
           </div>
-          <div>
-            <img src="/images/banner.png" alt="banuddy introduction" />
-          </div>
-          <div>
-            <img src="/images/banner.png" alt="banuddy introduction" />
-          </div>
-        </Slider>
-      </div>
-    </>
+        ))}
+      </Slider>
+    </div>
   )
 }
 

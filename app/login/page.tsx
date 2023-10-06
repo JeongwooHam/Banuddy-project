@@ -2,12 +2,17 @@ import Link from 'next/link'
 import './form.css'
 import Head from 'next/head'
 
+// 이미지 최적화를 위한 작업
+import Image from 'next/image'
+import Banner from '/public/assets/Banuddy.png'
+import LoginImage from '/public/images/login.png'
+
 export default function Login() {
   return (
     <>
       <div className="flex h-screen">
         <div className="flex-1 flex justify-center items-center">
-          <img src="images/login.png" alt="Login Image" className="" />
+          <Image src={LoginImage} alt="Login Image" className="" />
         </div>
 
         <div className="flex-1 flex flex-col justify-center items-center">
@@ -17,7 +22,7 @@ export default function Login() {
           </Head>
 
           <div className="flex flex-col items-center mb-4">
-            <img src="/assets/Banuddy.png" alt="Logo" className=" h-10 " />
+            <Image src={Banner} alt="Logo" className="w-full h-10 " />
           </div>
 
           <div className="flex flex-col gap-3">
