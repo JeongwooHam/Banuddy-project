@@ -14,7 +14,7 @@
   --subColor-100: theme(colors.subColor.100);
   --subColor-200: theme(colors.subColor.200);
   --brownColor-100: theme(colors.brown.100);
-  --brownColor-100: theme(colors.brown.200);
+  --brownColor-200: theme(colors.brown.200);
   --font-100: theme(colors.font.100);
   --font-200: theme(colors.font.200);
   --font-300: theme(colors.font.300);
@@ -37,7 +37,7 @@
 
 @layer base {
   html {
-    @apply overflow-x-hidden;
+    @apply overflow-x-hidden bg-white;
   }
 
   body {
