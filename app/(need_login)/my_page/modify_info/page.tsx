@@ -1,3 +1,11 @@
+import ModifyMyInformation from './_components/ModifyMyInformation'
+import ModifyPassword from './_components/ModifyPassword'
+import MyActivities from './_components/MyActivities'
+
 export default function modifyInfo() {
-  return <h1>개인정보수정 페이지입니다</h1>
+  return (
+    <div className="pl-[40px]">
+      <MyActivities /> <ModifyMyInformation /> <ModifyPassword />
+    </div>
+  )
 }
