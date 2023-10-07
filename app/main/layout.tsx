@@ -1,5 +1,4 @@
-import AuthContext from '@/context/AuthContext'
-import './globals.css'
+import MainLayout from '@/components/layout/MainLayout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -15,7 +14,7 @@ export default function RootLayout({
   return (
     <html className="font-display">
       <body>
-        <AuthContext>{children}</AuthContext>
+        <MainLayout children={children} />
       </body>
     </html>
   )
