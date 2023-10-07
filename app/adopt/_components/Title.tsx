@@ -4,7 +4,6 @@ import TitleBackground from '/public/images/listHeader.png'
 type adoptProp = { isSeoul: boolean }
 
 const Title: React.FC<adoptProp> = ({ isSeoul }) => {
-  // 서울/전국 보이는 내용 다르게 하기
   return (
     <div className="relative">
       <Image

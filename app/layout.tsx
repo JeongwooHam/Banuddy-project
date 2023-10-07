@@ -1,6 +1,7 @@
 import Footer from '@/components/footer/footer'
 import './globals.css'
 import type { Metadata } from 'next'
+import ScrollToTop from '@/components/scrollToTop/scrollToTop'
 
 export const metadata: Metadata = {
   title: 'Banuddy',
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <div>HEADER</div>
         {children}
+        <ScrollToTop />
         <Footer />
       </body>
     </html>

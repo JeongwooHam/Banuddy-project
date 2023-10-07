@@ -1,7 +1,6 @@
 import Title from '../_components/Title'
 import AnimalFilter from '../_components/Filter'
 import AnimalList from '../_components/AnimalList'
-import ScrollToTop from '@/components/scrollToTop/scrollToTop'
 
 const AdoptSeoul: React.FC = () => {
   return (
@@ -11,7 +10,6 @@ const AdoptSeoul: React.FC = () => {
         <AnimalFilter isSeoul={true} />
         <AnimalList />
       </div>
-      <ScrollToTop />
     </>
   )
 }

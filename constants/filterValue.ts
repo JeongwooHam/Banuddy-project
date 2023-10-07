@@ -27,6 +27,13 @@ const dosi = [
   '제주특별자치도',
 ].sort()
 
+const shelterCategory = ['전체', '동물병원', '보호소']
+
+export const filterForShelter: value[] = [
+  { title: '지역선택', valueArray: dosi },
+  { title: '기관유형', valueArray: shelterCategory },
+]
+
 export const filterForSeoul: value[] = [
   { title: '동물구분', valueArray: animalcategory },
   { title: '성별', valueArray: animalSex },
