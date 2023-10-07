@@ -18,7 +18,7 @@ const BannerAd = () => {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full bg-gray-100">
         <Slider {...sliderSettings}>
           <div>
             <Image src={BannerAdImg} alt="banuddy introduction" />

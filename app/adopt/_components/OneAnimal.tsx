@@ -18,7 +18,7 @@ const OneAnimal: React.FC = () => {
   return (
     <>
       <OneCard
-        boxStyle="w-56 h-auto rounded  pt-[25px] border-slate-200"
+        boxStyle="w-56 h-auto rounded bg-white pt-[25px] border-slate-200"
         content={boxContent}
       />
     </>
