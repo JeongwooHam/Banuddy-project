@@ -1,4 +1,5 @@
 import Footer from '@/components/footer/footer'
+import AuthContext from '@/context/AuthContext'
 import './globals.css'
 import type { Metadata } from 'next'
 import ScrollToTop from '@/components/scrollToTop/scrollToTop'
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html className="font-display">
       <body>
-        <div>HEADER</div>
-        {children}
-        <ScrollToTop />
-        <Footer />
+        <AuthContext>
+          <div>HEADER</div>
+          {children}
+          <ScrollToTop />
+          <Footer />
+        </AuthContext>
       </body>
     </html>
   )

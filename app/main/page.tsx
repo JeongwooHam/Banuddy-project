@@ -12,10 +12,10 @@ const Main: React.FC = () => {
   const animalComponents = Array(8).fill(<OneAnimal />)
 
   return (
-    <div className="min-h-screen container">
+    <div className="min-h-screen containerMain">
       <NavBar />
       <BannerAd />
-      <div className="w-[70%] min-w-[700px]">
+      <div className="w-[100%] min-w-[700px]">
         <DogCarousel content={animalComponents} />
         <CatCarousel content={animalComponents} />
       </div>
