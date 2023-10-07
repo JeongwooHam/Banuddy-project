@@ -1,16 +1,23 @@
 'use client'
 
 import OneCard from '@/components/card/card'
-import Image from 'next/image'
-import SampleImage from '/public/images/sampleImage.png'
+import Image, { StaticImageData } from 'next/image'
 import { useRouter } from 'next/navigation'
 
 interface AnimalProps {
+  // API 호출 시 수정 예정
   animalId: number
-  // API 호출 시 추가 예정
+  imageUrl: StaticImageData
+  name: string
+  description: string
 }
 
-const OneAnimal: React.FC<AnimalProps> = ({ animalId }) => {
+const OneAnimal: React.FC<AnimalProps> = ({
+  animalId,
+  imageUrl,
+  name,
+  description,
+}) => {
   const router = useRouter()
 
   return (
@@ -20,11 +27,11 @@ const OneAnimal: React.FC<AnimalProps> = ({ animalId }) => {
         content={
           <div onClick={() => router.push(`/adopt/${animalId + ''}`)}>
             <div>
-              <Image src={SampleImage} alt="sample" />
+              <Image src={imageUrl} alt="sample" />
             </div>
             <div className="text-center">
-              <div className="font-script text-xl">단지</div>
-              <div className="text-gray-300">푸들 / 암컷 / 4세 1개월</div>
+              <div className="font-script text-xl">{name}</div>
+              <div className="text-gray-300">{description}</div>
             </div>
           </div>
         }
