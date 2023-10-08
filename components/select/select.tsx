@@ -20,7 +20,9 @@ const CommonSelect: React.FC<SelectProps> = ({ selectValue }) => {
         </SelectTrigger>
         <SelectContent className="bg-white">
           {selectValue.map((val) => (
-            <SelectItem value={val}>{val}</SelectItem>
+            <SelectItem value={val} key={Math.random() * 1000}>
+              {val}
+            </SelectItem>
           ))}
         </SelectContent>
       </Select>

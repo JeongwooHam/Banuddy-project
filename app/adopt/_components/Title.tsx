@@ -14,6 +14,7 @@ const Title: React.FC<adoptProp> = ({ isSeoul }) => {
           width: '100%',
           zIndex: '0',
         }}
+        priority={true}
       />
       <div className="text-center z-10 absolute top-10 w-full">
         <div className="text-[67px] font-script">

@@ -15,7 +15,7 @@ const AnimalFilter: React.FC<adoptProp> = ({ isSeoul }) => {
       <div className="flex justify-between w-[800px]">
         {(isSeoul ? filterForSeoul : filterForNational).map(
           ({ title, valueArray }) => (
-            <div>
+            <div key={Math.random() * 1000}>
               <div className="text-base font-bold mb-2">{title}</div>
               <CommonSelect selectValue={valueArray} />
             </div>
