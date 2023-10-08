@@ -18,6 +18,7 @@ const NavTabs: React.FC = () => {
     <>
       {navArray.map(({ id, key, value }) => (
         <li
+          key={id}
           onClick={() => {
             router.replace(`/my_page${value}`)
             setTarget(id)

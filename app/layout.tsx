@@ -3,6 +3,7 @@ import AuthContext from '@/context/AuthContext'
 import './globals.css'
 import type { Metadata } from 'next'
 import ScrollToTop from '@/components/scrollToTop/scrollToTop'
+import Providers from '@/lib/providers'
 
 export const metadata: Metadata = {
   title: 'Banuddy',
@@ -17,12 +18,14 @@ export default function RootLayout({
   return (
     <html className="font-display">
       <body suppressHydrationWarning={true}>
-        <AuthContext>
-          <div>HEADER</div>
-          {children}
-          <ScrollToTop />
-          <Footer />
-        </AuthContext>
+        <Providers>
+          <AuthContext>
+            <div>HEADER</div>
+            {children}
+            <ScrollToTop />
+            <Footer />
+          </AuthContext>
+        </Providers>
       </body>
     </html>
   )

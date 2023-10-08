@@ -17,6 +17,7 @@ export default function MyPageLayout({
           layout="fill"
           objectFit="cover"
           objectPosition="center"
+          priority={true}
         />
       </div>
       <div className="flex z-100 absolute h-[90%] mt-[40px] bg-white rounded left-[22%] pt-[50px] ">

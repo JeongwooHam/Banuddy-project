@@ -5,21 +5,24 @@ import ProfileImage from './ProfileImage'
 import editIcon from '/public/icons/pencil.svg'
 import { useState } from 'react'
 import EditMode from './EditMode'
+import { atom, useAtom } from 'jotai'
 
 interface userProps {
   nickname: string
   description: string
 }
 
+export const editAtom = atom(false)
+
 const UserInfo: React.FC<userProps> = ({ nickname, description }) => {
-  const [isEditMode, setIsEditMode] = useState(false)
+  const [isEditMode, setIsEditMode] = useAtom(editAtom)
 
   return (
     <>
       <li className="mb-[50px]">
         <ProfileImage />
         {isEditMode ? (
-          <EditMode setIsEditMode={setIsEditMode} />
+          <EditMode />
         ) : (
           <>
             <div className="flex justify-center">
