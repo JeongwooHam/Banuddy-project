@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html className="font-display">
-      <body>
+      <body suppressHydrationWarning={true}>
         <AuthContext>
           <div>HEADER</div>
           {children}
