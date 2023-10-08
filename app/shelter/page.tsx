@@ -1,7 +1,13 @@
+import ShelterFilter from './_components/Filter'
+import ShelterList from './_components/ShelterList'
+import Title from './_components/Title'
+
 export default function Shelter() {
   return (
-    <>
-      <h1>Shelter 페이지입니다</h1>
-    </>
+    <div className="bg-primary-100 pb-[60px]">
+      <Title />
+      <ShelterFilter />
+      <ShelterList />
+    </div>
   )
 }

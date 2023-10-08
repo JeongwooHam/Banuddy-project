@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import FillPaw from '/public/icons/paw-fill.svg'
-import EmptyPaw from '/public/icons/paw-empty.svg'
+import FillStar from '/public/icons/star-fill.svg'
+import EmptyStar from '/public/icons/star-empty.svg'
 import Image from 'next/image'
 
 const LikeButton: React.FC = () => {
@@ -11,11 +11,11 @@ const LikeButton: React.FC = () => {
   return (
     <>
       <button
-        className="w-[60px] h-[60px] border-solid border-[1px] border-primary-300 rounded-full"
+        className="w-[21px] h-[21px] border-none"
         onClick={() => setIsLiked((prev) => !prev)}
       >
         <Image
-          src={isLiked ? FillPaw : EmptyPaw}
+          src={isLiked ? FillStar : EmptyStar}
           alt="paw"
           className="m-center"
         />

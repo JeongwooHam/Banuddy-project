@@ -21,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
           <button
             onClick={() => handlePageClick(activePage - 1)}
             disabled={activePage === 1}
-            className={`px-3 py-2 rounded-full ${
+            className={`w-[40px] h-[40px] px-3 py-2 rounded-full ${
               activePage === 1
                 ? 'text-gray-100 cursor-not-allowed'
                 : 'text-black'
@@ -36,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
             <li key={page}>
               <button
                 onClick={() => handlePageClick(page)}
-                className={`px-3 py-2 rounded-full ${
+                className={`w-[40px] h-[40px] px-3 py-2 rounded-full ${
                   activePage === page ? 'bg-primary-200' : 'bg-transparent/[0]'
                 }`}
               >
@@ -50,7 +50,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
           <button
             onClick={() => handlePageClick(activePage + 1)}
             disabled={activePage === totalPages}
-            className={`px-3 py-2 rounded-full ${
+            className={`w-[40px] h-[40px] px-3 py-2 rounded-full ${
               activePage === totalPages
                 ? 'text-gray-100 cursor-not-allowed'
                 : 'text-black'
