@@ -8,6 +8,12 @@ import FindAddress from '@/components/address/Address'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력하세요'),
+  phoneNumber: yup.string().required('휴대폰번호를 입력해주세요'),
+  emergencyContact: yup.string().required('비상연락처를 입력해주세요'),
+  age: yup.string().required('나이를 입력해주세요'),
+  occupation: yup.string().required('직장정보를 입력해주세요'),
+  isFemale: yup.boolean().oneOf([true], '성별을 선택해주세요'),
+  isMarried: yup.boolean().oneOf([true], '결혼여부를 선택해주세요'),
   address: yup.string().required('집주소를 입력하세요'),
   consentText: yup
     .string()
@@ -45,7 +51,7 @@ const ApplicationForm: React.FC = () => {
   const onSubmit: SubmitHandler<ApplicationFormData> = (data) => {}
 
   return (
-    <div className="containerMain">
+    <div className="containerMain bg-[#eaebf0]">
       <div>
         <img src="/images/formHeader.png" />
       </div>
@@ -164,10 +170,7 @@ const ApplicationForm: React.FC = () => {
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="bg-blue-500 text-white rounded py-2 px-4"
-          >
+          <button className="submit-btn" type="submit">
             제출하기
           </button>
         </form>

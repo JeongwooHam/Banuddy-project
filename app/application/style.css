@@ -14,3 +14,12 @@
   background-repeat: no-repeat;
   objectfit: cover;
 }
+
+.submit-btn {
+  background-color: var(--primary-300);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-bold);
+  border: 1px solid var(--gray-200);
+  border-radius: 30px;
+  padding: 7px 7px;
+}

@@ -4,7 +4,7 @@ import ScrollButton from './_component/ScrollToMain'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import introImg from '/public/images/intro1.png'
+import introImg from '/public/images/intro2.png'
 
 export default function Landing() {
   return (
