@@ -16,7 +16,7 @@ const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
     arrows: false,
     slidesToShow: 4,
     slidesToScroll: 4,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3500,
 
     nextArrow: (
@@ -32,16 +32,25 @@ const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
   }
 
   return (
-    <div className="w-full">
-      <Slider {...sliderSettings}>
-        {content.map((slideContent: any, index: number | string) => (
-          <div key={index}>
-            <div className="w-56 h-auto rounded bg-white pt-[25px] border-slate-200">
-              {slideContent}
+    <div
+      className=" w-full"
+      style={{
+        backgroundImage: "url('/images/catSlide.png')",
+        backgroundRepeat: 'no-repeat',
+        objectFit: 'cover',
+      }}
+    >
+      <div className="w-[70%]">
+        <Slider {...sliderSettings}>
+          {content.map((slideContent: any, index: number | string) => (
+            <div key={index}>
+              <div className="max-h-[300px] rounded pt-[25px] border-slate-200">
+                {slideContent}
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   )
 }

@@ -61,6 +61,7 @@ export default function Login() {
             <button className="submit-btn" onClick={handleLogin}>
               로그인
             </button>
+            <button className="submit-btn">구글 로그인하기</button>
 
             <Link href="/signup" className="text-center">
               <button className="signup-btn">회원가입 하러가기</button>

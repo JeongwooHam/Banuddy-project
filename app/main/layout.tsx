@@ -1,10 +1,5 @@
-
-import AuthContext from '@/context/AuthContext'
-
-import Footer from '@/components/footer/footer'
-import './globals.css'
+import MainLayout from '@/components/layout/MainLayout'
 import type { Metadata } from 'next'
-import ScrollToTop from '@/components/scrollToTop/scrollToTop'
 
 export const metadata: Metadata = {
   title: 'Banuddy',
@@ -19,9 +14,7 @@ export default function RootLayout({
   return (
     <html className="font-display">
       <body>
-        <AuthContext>{children}</AuthContext>
-        <div>HEADER</div>
-        <ScrollToTop />
+        <MainLayout children={children} />
       </body>
     </html>
   )

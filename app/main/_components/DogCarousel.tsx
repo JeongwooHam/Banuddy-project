@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
+import { url } from 'inspector'
 
 interface DogCarouselProps {
   content: React.ReactNode[]
@@ -14,10 +15,10 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
     infinite: true,
     speed: 1500,
     arrows: false,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    slidesToShow: 5,
+    slidesToScroll: 3,
+    autoplay: false,
+    autoplaySpeed: 4000,
 
     nextArrow: (
       <div>
@@ -32,16 +33,25 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
   }
 
   return (
-    <div className="w-full">
-      <Slider {...sliderSettings}>
-        {content.map((slideContent: any, index: number | string) => (
-          <div key={index}>
-            <div className="w-45 h-auto rounded bg-white pt-[25px] border-slate-200">
-              {slideContent}
+    <div
+      className=" w-full"
+      style={{
+        backgroundImage: "url('/images/dogSlide.png')",
+        backgroundRepeat: 'no-repeat',
+        objectFit: 'cover',
+      }}
+    >
+      <div className="w-[70%]">
+        <Slider {...sliderSettings}>
+          {content.map((slideContent: any, index: number | string) => (
+            <div key={index}>
+              <div className="h-auto rounded pt-[25px] border-slate-200">
+                {slideContent}
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   )
 }

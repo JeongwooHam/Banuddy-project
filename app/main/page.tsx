@@ -5,23 +5,22 @@ import BannerAd from './_components/Banner'
 import DogCarousel from './_components/DogCarousel'
 import CatCarousel from './_components/CatCarousel'
 import './style.css'
-import OneAnimal from '../adopt/_components/OneAnimal'
 import NavBar from '@/components/navBar/NavBar'
 
 const Main: React.FC = () => {
-  const animalComponents = Array(8).fill(<OneAnimal />)
+  const animalComponents = Array(8).fill(<img src="/images/sampleImage.png" />)
 
   return (
-    <div className="min-h-screen container">
+    <div className="min-h-screen containerMain">
       <NavBar />
       <BannerAd />
-      <div className="w-[70%] min-w-[700px]">
+      <div className="w-[100%] min-w-[700px]">
         <DogCarousel content={animalComponents} />
         <CatCarousel content={animalComponents} />
       </div>
       <div className="w-[70%]  min-w-[700px] flex flex-grow ">
         <div className="flex-1 p-4">
-          <div className="bg-gray-200 p-4">
+          <div className="adoptBtnSection">
             반려동물 입양
             <p>
               많은 유기동물들이 가족과 친구들을 기다리고 있습니다. 아이들에게
@@ -38,7 +37,7 @@ const Main: React.FC = () => {
           </div>
         </div>
         <div className="flex-1 p-4">
-          <div className="bg-gray-200 p-4">
+          <div className="shelterBtnSection">
             보호소봉사
             <p>
               열악한 환경에 놓인 유기 동물들에게 도움의 손길이 절실합니다.
