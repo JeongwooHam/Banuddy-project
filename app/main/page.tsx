@@ -1,18 +1,16 @@
 'use client'
 
 import React from 'react'
-import BannerAd from './_components/Banner'
+import './style.css'
 import DogCarousel from './_components/DogCarousel'
 import CatCarousel from './_components/CatCarousel'
-import './style.css'
-import NavBar from '@/components/navBar/NavBar'
+import BannerAd from './_components/Banner'
 
 const Main: React.FC = () => {
   const animalComponents = Array(8).fill(<img src="/images/sampleImage.png" />)
 
   return (
     <div className="min-h-screen containerMain">
-      <NavBar />
       <BannerAd />
       <div className="w-[100%] min-w-[700px]">
         <DogCarousel content={animalComponents} />

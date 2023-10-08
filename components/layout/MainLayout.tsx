@@ -1,3 +1,7 @@
+import Footer from '../footer/footer'
+import NavBar from '../navBar/NavBar'
+import ScrollToTop from '../scrollToTop/scrollToTop'
+
 export default function MainLayout({
   children,
 }: {
@@ -5,9 +9,10 @@ export default function MainLayout({
 }) {
   return (
     <div className="font-display">
-      <div>header</div>
+      <NavBar />
       {children}
-      <div>footer</div>
+      <ScrollToTop />
+      <Footer />
     </div>
   )
 }
