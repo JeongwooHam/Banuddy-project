@@ -52,16 +52,16 @@ const ApplicationForm: React.FC = () => {
   const onSubmit: SubmitHandler<ApplicationFormData> = (data) => {}
 
   return (
-    <div className="w-content m-auto bg-[#eaebf0]">
+    <div className="w-content m-auto bg-[#eaebf0] pb-20">
       <div>
         <img src="/images/formHeader.png" />
       </div>
-      <div className="w-2/3 imgSection">
+      <div className="pl-[80px] ">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <h2 className="text-xl font-bold mb-2">개인정보 입력</h2>
-            <div className="flex flex-col mb-4">
-              <label className="mb-1">성명</label>
+            <h2 className="text-xl font-bold mb-2 pb-[20px]">개인정보 입력</h2>
+            <div className="flex flex mb-4">
+              <label className="label-application">성명</label>
               <Controller
                 name="name"
                 control={control}
@@ -69,10 +69,10 @@ const ApplicationForm: React.FC = () => {
                   <input
                     {...field}
                     type="text"
-                    className={`border rounded p-2 ${
+                    className={`input-application p-2 ${
                       errors?.name ? 'border-red-500' : ''
                     }`}
-                    placeholder="성명"
+                    placeholder="성함을 입력해주세요"
                   />
                 )}
               />
@@ -80,11 +80,96 @@ const ApplicationForm: React.FC = () => {
                 <p className="text-red-500">{errors.name.message}</p>
               )}
             </div>
+            <div className="flex flex mb-4">
+              <label className="label-application">휴대폰번호</label>
+              <Controller
+                name="phoneNumber"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type="text"
+                    className={`input-application p-2 ${
+                      errors?.phoneNumber ? 'border-red-500' : ''
+                    }`}
+                    placeholder="휴대폰번호를 입력해주세요"
+                  />
+                )}
+              />
+              {errors?.phoneNumber && (
+                <p className="text-red-500">{errors.phoneNumber.message}</p>
+              )}
+            </div>
 
-            <div className="flex flex-col mb-4">
-              <label className="mb-1">집주소</label>
+            <div className="flex flex mb-4">
+              <label className="label-application">비상연락처</label>
+              <Controller
+                name="emergencyContact"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type="text"
+                    className={`input-application p-2 ${
+                      errors?.emergencyContact ? 'border-red-500' : ''
+                    }`}
+                    placeholder="비상연락처를 입력해주세요"
+                  />
+                )}
+              />
+              {errors?.emergencyContact && (
+                <p className="text-red-500">
+                  {errors.emergencyContact.message}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex mb-4">
+              <label className="label-application">나이</label>
+              <Controller
+                name="age"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type="text"
+                    className={`input-application p-2 ${
+                      errors?.age ? 'border-red-500' : ''
+                    }`}
+                    placeholder="만나이를 입력해주세요"
+                  />
+                )}
+              />
+              {errors?.age && (
+                <p className="text-red-500">{errors.age.message}</p>
+              )}
+            </div>
+
+            <div className="flex flex mb-4">
+              <label className="label-application">직장정보</label>
+              <Controller
+                name="occupation"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type="text"
+                    className={`input-application p-2 ${
+                      errors?.occupation ? 'border-red-500' : ''
+                    }`}
+                    placeholder="직장정보를 입력해주세요"
+                  />
+                )}
+              />
+              {errors?.occupation && (
+                <p className="text-red-500">{errors.occupation.message}</p>
+              )}
+            </div>
+
+            <div className="flex flex mb-4">
+              <label className="label-application">집주소</label>
               <div className="h-[50px] flex align-center text-center gap-2">
-                <div>주소:{address}</div>
+                <div>{address}</div>
                 <FindAddress setter={setAddress} />
               </div>
               {errors?.address && (
@@ -94,7 +179,7 @@ const ApplicationForm: React.FC = () => {
 
             <div className="flex flex-col mb-4">
               <label className="mb-1">개인정보 수집 및 이용에 대한 동의</label>
-              <div className="border rounded p-4 bg-white">
+              <div className="border rounded p-4 bg-white w-[600px]">
                 개인정보처리에대한 안내 블라블라 개인정보처리에대한 안내
                 블라블라개인정보처리에대한 안내 블라블라개인정보처리에대한 안내
                 블라블라개인정보처리에대한 안내 블라블라개인정보처리에대한 안내
@@ -124,8 +209,8 @@ const ApplicationForm: React.FC = () => {
 
           <div className="mb-4">
             <h2 className="text-xl font-bold mb-2">입양정보 입력</h2>
-            <div className="flex flex-col mb-4">
-              <label className="mb-1">희망동물 이름</label>
+            <div className="flex mb-4">
+              <label className="label-application">희망동물 이름</label>
               <Controller
                 name="petName"
                 control={control}
@@ -133,14 +218,14 @@ const ApplicationForm: React.FC = () => {
                   <input
                     {...field}
                     type="text"
-                    className="border rounded p-2"
+                    className="input-application"
                     placeholder="희망동물 이름"
                   />
                 )}
               />
             </div>
-            <div className="flex flex-col mb-4">
-              <label className="mb-1">보호소명</label>
+            <div className="flex  mb-4">
+              <label className="label-application">보호소명</label>
               <Controller
                 name="shelterName"
                 control={control}
@@ -148,14 +233,14 @@ const ApplicationForm: React.FC = () => {
                   <input
                     {...field}
                     type="text"
-                    className="border rounded p-2"
+                    className="input-application"
                     placeholder="보호소명"
                   />
                 )}
               />
             </div>
-            <div className="flex flex-col mb-4">
-              <label className="mb-1">보호소 연락처</label>
+            <div className="flex  mb-4">
+              <label className="label-application">보호소 연락처</label>
               <Controller
                 name="shelterContact"
                 control={control}
@@ -163,7 +248,7 @@ const ApplicationForm: React.FC = () => {
                   <input
                     {...field}
                     type="text"
-                    className="border rounded p-2"
+                    className="input-application"
                     placeholder="보호소 연락처"
                   />
                 )}

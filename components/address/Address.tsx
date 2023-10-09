@@ -23,7 +23,7 @@ const FindAddress: React.FC<FindAddressProps> = ({ setter }) => {
     <>
       <div className="flex items-center address_search">
         <button
-          className="w-20 h-10 border border-black text-sm font-bold rounded-lg cursor-pointer hover:bg-gray-200"
+          className="w-20 h-10 border bg-white border-black text-sm font-bold rounded-lg cursor-pointer hover:bg-gray-200"
           onClick={handleComplete}
         >
           주소 찾기
