@@ -51,7 +51,7 @@ export default function SignUp() {
     setIconColors(newIconColors)
   }, [inputValues])
 
-  const handleInputChange = (index: any, value: any) => {
+  const handleInputChange = (index: number, value: string) => {
     const newInputValues = [...inputValues]
     newInputValues[index] = value
     setInputValues(newInputValues)

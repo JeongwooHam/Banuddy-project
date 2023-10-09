@@ -43,7 +43,7 @@ const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
     >
       <div className="w-[70%] pt-[30px] m-auto align-center">
         <Slider {...sliderSettings}>
-          {content.map((slideContent: any, index: number | string) => (
+          {content.map((slideContent, index) => (
             <div key={index}>
               <div className="h-auto rounded pt-[25px] border-slate-200">
                 {slideContent}

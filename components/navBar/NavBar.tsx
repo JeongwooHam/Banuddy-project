@@ -6,7 +6,7 @@ import Banner from '/public/assets/Banuddy.png'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import './style.css'
 
-const NavBar = () => {
+const NavBarDefault = () => {
   const { data: session } = useSession() //세션 정보를 가져옴
 
   return (
@@ -44,4 +44,4 @@ const NavBar = () => {
     </div>
   )
 }
-export default NavBar
+export default NavBarDefault

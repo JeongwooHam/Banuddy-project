@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Post from './Post'
 
 interface FindAddressProps {
-  setter: any
-  //오류해결을 못하겠음 ㅠ
+  setter: Dispatch<SetStateAction<string>>
 }
 
 const FindAddress: React.FC<FindAddressProps> = ({ setter }) => {

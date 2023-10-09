@@ -44,7 +44,7 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
     >
       <div className="w-[70%] pt-[30px] m-auto">
         <Slider {...sliderSettings}>
-          {content.map((slideContent: any, index: number | string) => (
+          {content.map((slideContent, index) => (
             <div key={index}>
               <div className="h-auto rounded pt-[25px] border-slate-200">
                 {slideContent}
