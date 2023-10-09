@@ -13,7 +13,7 @@ import {
 } from '@/app/api/adopt/seoul/seoul.api'
 import SampleImage from '/public/assets/sample.svg'
 
-interface mergedItem {
+export interface mergedItem {
   animalNo: number
   list: Row
   photo: Photo[] | undefined
@@ -50,7 +50,7 @@ const SeoulAnimalList: React.FC = async () => {
     (animal) => typeof animal.photo !== undefined && animal.photo?.length,
   )
 
-  console.log('merge', animalWithPhoto)
+  console.log('res', animalWithPhoto)
 
   return (
     <>
@@ -64,7 +64,7 @@ const SeoulAnimalList: React.FC = async () => {
             {animalWithPhoto.slice(0, 8).map((animal) => (
               <OneSeoulAnimal
                 animal={animal.list}
-                thumbnail={!!animal.photo && animal.photo[0].PHOTO_URL}
+                images={!!animal.photo && animal.photo}
                 key={Math.random() * 1000}
               />
             ))}

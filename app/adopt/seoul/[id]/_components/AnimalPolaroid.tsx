@@ -1,27 +1,39 @@
 import Image from 'next/image'
 import ImageSlide from './ImageSlide'
 import Cat from '/public/icons/cat.svg'
+import { useAtom } from 'jotai'
+import { animalAtom } from '../../_components/OneSeoulAnimal'
+import { mergedItem } from '../../_components/SeoulAnimalList'
+import State from '@/constants/adoptState'
 
-type animalProp = { name: string }
+const AnimalPolaroid: React.FC = () => {
+  const [targetAnimal] = useAtom(animalAtom)
 
-const AnimalPolaroid: React.FC<animalProp> = ({ name }) => {
-  return (
-    <div className="w-[500px] border-solid border-[1px] border-gray-100 shadow relative">
-      <ImageSlide />
-      <div className="absolute top-[80px] left-[90px] w-[70px] h-[70px] bg-primary-300 rounded-full p-[10px]">
-        <p className="w-[40px] ml-[5px] text-center">입양상태</p>
-      </div>
-      <div className="flex mt-[30px]">
-        <span>
-          <Image src={Cat} alt="cat" />
-        </span>
-        <div className="text-[24px] ml-[30px] text-center">
-          안녕하세요 저는 <span className="text-[40px] font-bold">{name}</span>
-          입니다.
+  if (targetAnimal) {
+    const target = targetAnimal as mergedItem
+    return (
+      <div className="w-[500px] border-solid border-[1px] border-gray-100 shadow relative">
+        <ImageSlide />
+        <div className="absolute top-[80px] left-[90px] w-[75px] h-[75px] bg-primary-300 rounded-full p-[10px]">
+          <p className="w-[45px] ml-[5px] text-center">
+            {State[target.list.ADP_STTUS]}
+          </p>
+        </div>
+        <div className="flex mt-[30px]">
+          <span>
+            <Image src={Cat} alt="cat" />
+          </span>
+          <div className="text-[24px] ml-[30px] text-center">
+            안녕하세요 저는{' '}
+            <span className="text-[40px] font-bold">
+              {target.list.NM.split('(')[0]}
+            </span>
+            입니다.
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default AnimalPolaroid

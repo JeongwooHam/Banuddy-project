@@ -15,7 +15,7 @@ const Detail: React.FC<pageParams> = ({ params }) => {
   return (
     <div>
       <div className="flex justify-between w-content m-center mb-[100px]">
-        <AnimalPolaroid name="뚜비" />
+        <AnimalPolaroid />
         <AnimalInfoText />
       </div>
       <AnimalDetail type="dog" />
