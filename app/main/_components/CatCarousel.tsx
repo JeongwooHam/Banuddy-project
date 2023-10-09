@@ -32,16 +32,26 @@ const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
   }
 
   return (
-    <div className="w-[70%]">
-      <Slider {...sliderSettings}>
-        {content.map((slideContent: any, index: number | string) => (
-          <div key={index}>
-            <div className="w-56 h-auto rounded pt-[25px] border-slate-200">
-              {slideContent}
+    <div
+      className="w-full "
+      style={{
+        height: '300px',
+        backgroundImage: "url('/images/catSlide.png')",
+        backgroundRepeat: 'no-repeat',
+        objectFit: 'cover',
+      }}
+    >
+      <div className="w-[70%] pt-[30px] m-auto align-center">
+        <Slider {...sliderSettings}>
+          {content.map((slideContent, index) => (
+            <div key={index}>
+              <div className="h-auto rounded pt-[25px] border-slate-200">
+                {slideContent}
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   )
 }

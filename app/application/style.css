@@ -1,0 +1,40 @@
+.imgSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: url('/public/images/formHeader.png');
+  background-repeat: no-repeat;
+  objectfit: cover;
+}
+
+.submit-btn {
+  background-color: var(--primary-300);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-bold);
+  border: 1px solid var(--gray-200);
+  border-radius: 30px;
+  padding: 7px 7px;
+  width: 300px;
+}
+
+.input-application {
+  width: 450px;
+  border: 1px solid var(--gray-300);
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: var(--size-xs);
+  background-color: white;
+}
+
+.label-application {
+  margin-left: 50px;
+  margin-bottom: 10px;
+  margin-right: 30px;
+  width: 100px;
+  color: var(--gray-300);
+  font-weight: var(--weight-bold);
+}

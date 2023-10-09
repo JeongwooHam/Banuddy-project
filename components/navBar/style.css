@@ -1,0 +1,10 @@
+.nav-item {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+  color: var(--brownColor-200);
+  background-color: var(--primary-100);
+}
