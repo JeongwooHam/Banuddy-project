@@ -4,20 +4,22 @@ import CommonSelect from '@/components/select/select'
 import CustomInput from '@/components/input/input'
 import { Button } from '@/components/button/Button'
 import { filterForNational, filterForSeoul } from '@/constants/filterValue'
+import { useState } from 'react'
 
 type adoptProp = { isSeoul: boolean }
 
 const AnimalFilter: React.FC<adoptProp> = ({ isSeoul }) => {
   const handleSearch = () => {}
+  const [selectVal, setSelectVal] = useState({})
 
   return (
     <div className="bg-brown-100 w-content m-auto mt-[100px] rounded-[3px] p-7">
       <div className="flex justify-between w-[800px]">
         {(isSeoul ? filterForSeoul : filterForNational).map(
-          ({ title, valueArray }) => (
+          ({ title, itemArray }) => (
             <div key={Math.random() * 1000}>
               <div className="text-base font-bold mb-2">{title}</div>
-              <CommonSelect selectValue={valueArray} />
+              <CommonSelect itemArray={itemArray} setSelectVal={setSelectVal} />
             </div>
           ),
         )}

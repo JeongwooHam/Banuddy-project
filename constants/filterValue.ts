@@ -1,6 +1,6 @@
 type value = {
   title: string
-  valueArray: string[]
+  itemArray: string[]
 }
 
 const animalcategory = ['전체', '개', '고양이', '기타']
@@ -30,20 +30,20 @@ const dosi = [
 const shelterCategory = ['전체', '동물병원', '보호소']
 
 export const filterForShelter: value[] = [
-  { title: '지역선택', valueArray: dosi },
-  { title: '기관유형', valueArray: shelterCategory },
+  { title: '지역선택', itemArray: dosi },
+  { title: '기관유형', itemArray: shelterCategory },
 ]
 
 export const filterForSeoul: value[] = [
-  { title: '동물구분', valueArray: animalcategory },
-  { title: '성별', valueArray: animalSex },
-  { title: '입양상태', valueArray: adoptState },
-  { title: '임시보호상태', valueArray: fosterState },
+  { title: '동물구분', itemArray: animalcategory },
+  { title: '성별', itemArray: animalSex },
+  { title: '입양상태', itemArray: adoptState },
+  { title: '임시보호상태', itemArray: fosterState },
 ]
 
 export const filterForNational: value[] = [
-  { title: '지역선택', valueArray: dosi },
-  { title: '동물구분', valueArray: animalcategory },
-  { title: '입양상태', valueArray: adoptState },
-  { title: '임시보호상태', valueArray: fosterState },
+  { title: '지역선택', itemArray: dosi },
+  { title: '동물구분', itemArray: animalcategory },
+  { title: '입양상태', itemArray: adoptState },
+  { title: '임시보호상태', itemArray: fosterState },
 ]

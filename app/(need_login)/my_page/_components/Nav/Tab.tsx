@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { useState } from 'react'
 
 const NavTabs: React.FC = () => {
@@ -12,21 +12,18 @@ const NavTabs: React.FC = () => {
 
   const [target, setTarget] = useState(0)
 
-  const router = useRouter()
-
   return (
     <>
       {navArray.map(({ id, key, value }) => (
         <li
           key={id}
           onClick={() => {
-            router.replace(`/my_page${value}`)
             setTarget(id)
           }}
           className="cursor-pointer  py-[10px] font-bold"
           style={{ backgroundColor: target === id ? '#C3F6AB' : 'white' }}
         >
-          {key}
+          <Link href={`/my_page${value}`}>{key}</Link>
         </li>
       ))}
     </>

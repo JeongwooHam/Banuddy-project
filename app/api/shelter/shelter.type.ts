@@ -1,3 +1,10 @@
+export type requestShelter = {
+  serviceKey: string
+  care_nm?: string
+  numOfRows?: number
+  pageNo?: number
+}
+
 export type responseShelter = {
   response: {
     header: {
