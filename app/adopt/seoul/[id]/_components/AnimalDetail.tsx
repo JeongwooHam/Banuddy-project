@@ -23,7 +23,7 @@ const AnimalDetail: React.FC<animalProps> = ({ type }) => {
     return (
       <div className={dynamicClassName}>
         <div className="w-content m-center ">
-          <AnimalVideo />
+          {/* <AnimalVideo /> */}
           <div className="text-center m-[50px] leading-[3rem]">
             {stringToHTML(INTRCN_CN)}
           </div>

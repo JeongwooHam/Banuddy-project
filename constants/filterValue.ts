@@ -3,10 +3,10 @@ type value = {
   itemArray: string[]
 }
 
-const animalcategory = ['전체', '개', '고양이', '기타']
-const animalSex = ['전체', '암컷', '수컷']
-const adoptState = ['전체', '입양대기', '입양진행중', '입양완료']
-const fosterState = ['전체', '센터보호중', '임시보호중']
+export const animalcategory = ['전체', '개', '고양이', '기타']
+export const animalSex = ['전체', '암컷', '수컷']
+export const adoptState = ['전체', '입양대기', '입양진행중', '입양완료']
+export const fosterState = ['전체', '센터보호중', '임시보호중']
 const dosi = [
   '서울특별시',
   '부산광역시',

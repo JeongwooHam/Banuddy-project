@@ -13,7 +13,11 @@ const ShelterList: React.FC = async () => {
     return (
       <div className="w-content m-auto mt-[50px]">
         <div className="font-bold mb-10 text-[24px]">
-          전체 <span className="text-brown-200">{8}</span>건
+          전체{' '}
+          <span className="text-brown-200">
+            {shelterRes.response.body.totalCount}
+          </span>
+          건
         </div>
         {shelterArray.map((shelter) => (
           <OneShelter shelter={shelter} key={Math.random() * 1000} />

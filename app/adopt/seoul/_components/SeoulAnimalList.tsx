@@ -12,6 +12,7 @@ import {
   getSeoulAnimalList,
 } from '@/app/api/adopt/seoul/seoul.api'
 import SampleImage from '/public/assets/sample.svg'
+import { useEffect, useState } from 'react'
 
 export interface mergedItem {
   animalNo: number
@@ -20,17 +21,33 @@ export interface mergedItem {
 }
 
 const SeoulAnimalList: React.FC = async () => {
-  const animalListRes: responseList = await getSeoulAnimalList(1, 28)
-  const animalPhotoRes: responsePhoto = await getSeoulAnimalImages(1, 250)
+  const [animalListRes, setAnimalListRes] = useState<responseList>()
+  const [animalPhotoRes, setAnimalPhotoRes] = useState<responsePhoto>()
+
+  useEffect(() => {
+    const fetch = async () => {
+      setAnimalListRes(await getSeoulAnimalList(1, 28))
+      setAnimalPhotoRes(await getSeoulAnimalImages(1, 250))
+    }
+    fetch()
+  }, [])
 
   const mergedArray: Array<{ animalNo: number; list: Row; photo?: Photo[] }> =
     []
+
+  if (!animalListRes) {
+    return null
+  }
 
   for (const row of animalListRes.TbAdpWaitAnimalView.row) {
     const mergedItem: mergedItem = {
       animalNo: row.ANIMAL_NO,
       list: row,
       photo: undefined,
+    }
+
+    if (!animalPhotoRes) {
+      return null
     }
 
     const matchingPhoto = animalPhotoRes.TbAdpWaitAnimalPhotoView.row.filter(
@@ -50,15 +67,20 @@ const SeoulAnimalList: React.FC = async () => {
     (animal) => typeof animal.photo !== undefined && animal.photo?.length,
   )
 
-  console.log('res', animalWithPhoto)
+  // const [category] = useAtom(categoryAtom)
+  // const filteredList = animalWithPhoto.filter((animal) => {
+  //   if (category) return animal.list.SPCS === category
+  //   return animal
+  // })
 
   return (
     <>
-      <AnimalFilter isSeoul={true} />
+      {/* <AnimalFilter isSeoul={true} /> */}
       <div className="w-content m-auto mt-[50px]">
         <div>
           <div className="font-bold mb-10 text-[24px]">
-            동물 공고 <span className="text-brown-200">{8}</span>건
+            동물 공고{' '}
+            <span className="text-brown-200">{animalWithPhoto.length}</span>건
           </div>
           <div className="grid grid-cols-4 grid-rows-2 gap-8">
             {animalWithPhoto.slice(0, 8).map((animal) => (
@@ -70,7 +92,7 @@ const SeoulAnimalList: React.FC = async () => {
             ))}
           </div>
         </div>
-        <Pagination totalPages={5} currentPage={1} />
+        <Pagination total={animalWithPhoto.length} currentPage={1} limit={8} />
       </div>
     </>
   )
