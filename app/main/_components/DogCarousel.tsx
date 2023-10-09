@@ -15,7 +15,7 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
     infinite: true,
     speed: 1500,
     arrows: false,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 3,
     autoplay: false,
     autoplaySpeed: 4000,
@@ -34,16 +34,17 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
 
   return (
     <div
-      className=" w-full"
+      className="w-full"
       style={{
+        height: '300px',
         backgroundImage: "url('/images/dogSlide.png')",
         backgroundRepeat: 'no-repeat',
-        objectFit: 'cover',
+        objectFit: 'contain',
       }}
     >
-      <div className="w-[70%]">
+      <div className="w-[70%] pt-[30px] m-auto">
         <Slider {...sliderSettings}>
-          {content.map((slideContent: any, index: number | string) => (
+          {content.map((slideContent, index) => (
             <div key={index}>
               <div className="h-auto rounded pt-[25px] border-slate-200">
                 {slideContent}

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Post from './Post'
 
 interface FindAddressProps {
-  setter: any
-  //오류해결을 못하겠음 ㅠ
+  setter: Dispatch<SetStateAction<string>>
 }
 
 const FindAddress: React.FC<FindAddressProps> = ({ setter }) => {
@@ -23,7 +22,7 @@ const FindAddress: React.FC<FindAddressProps> = ({ setter }) => {
     <>
       <div className="flex items-center address_search">
         <button
-          className="w-20 h-10 border border-black text-sm font-bold rounded-lg cursor-pointer hover:bg-gray-200"
+          className="w-20 h-10 border bg-white border-black text-sm font-bold rounded-lg cursor-pointer hover:bg-gray-200"
           onClick={handleComplete}
         >
           주소 찾기

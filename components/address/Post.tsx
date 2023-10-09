@@ -1,12 +1,12 @@
 import React from 'react'
-import DaumPostcode from 'react-daum-postcode'
+import DaumPostcode, { Address } from 'react-daum-postcode'
 
 const Post: React.FC<{
   address: string
   setAddress: React.Dispatch<React.SetStateAction<string>>
   setPopup: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ address, setAddress, setPopup }) => {
-  const complete = (data: any) => {
+  const complete = (data: Address) => {
     let fullAddress = data.address
 
     if (data.addressType === 'R') {

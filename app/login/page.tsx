@@ -1,21 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import './form.css'
 import Head from 'next/head'
-
-// 이미지 최적화를 위한 작업
 import Image from 'next/image'
 import Banner from '/public/assets/Banuddy.png'
 import LoginImage from '/public/images/login.png'
 import { useRouter } from 'next/navigation'
+import { signIn, useSession } from 'next-auth/react'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showAlert, setShowAlert] = useState(false)
+  const [isLoggedInPopupVisible, setIsLoggedInPopupVisible] = useState(false)
   const router = useRouter()
+  const { status } = useSession()
 
   const handleLogin = () => {
     if (!email || !password) {
@@ -25,9 +26,17 @@ export default function Login() {
     router.push('/main')
   }
 
+  useEffect(() => {
+    setIsLoggedInPopupVisible(true)
+    setTimeout(() => {
+      setIsLoggedInPopupVisible(false)
+      router.push('/main')
+    }, 3000)
+  }, [status])
+
   return (
     <>
-      <div className="flex h-screen">
+      <div className="w-content m-auto flex h-screen">
         <div className="flex-1 flex justify-center items-center">
           <Image src={LoginImage} alt="Login Image" className="" />
         </div>
@@ -61,7 +70,17 @@ export default function Login() {
             <button className="submit-btn" onClick={handleLogin}>
               로그인
             </button>
-            <button className="submit-btn">구글 로그인하기</button>
+            <Link href={'/'}>
+              <button className="google-btn" onClick={() => signIn()}>
+                <Image
+                  src={'/icons/g-logo.png'}
+                  alt="google"
+                  width={30}
+                  height={18}
+                />
+                <span>구글로 로그인하기</span>
+              </button>
+            </Link>
 
             <Link href="/signup" className="text-center">
               <button className="signup-btn">회원가입 하러가기</button>
@@ -79,6 +98,13 @@ export default function Login() {
             >
               확인
             </button>
+          </div>
+        </div>
+      )}
+      {isLoggedInPopupVisible && (
+        <div className="flex justify-center items-center text-center fixed rounded-2xl inset-0 bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded shadow-lg">
+            <p className="text-black text-bold">로그인되어 있습니다!</p>
           </div>
         </div>
       )}

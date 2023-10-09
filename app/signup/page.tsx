@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Banner from '/public/assets/Banuddy.png'
 import { useRouter } from 'next/navigation'
+import BanuddyIconImage from '/public/images/signup-paw.png'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력해주세요'),
@@ -50,7 +51,7 @@ export default function SignUp() {
     setIconColors(newIconColors)
   }, [inputValues])
 
-  const handleInputChange = (index: any, value: any) => {
+  const handleInputChange = (index: number, value: string) => {
     const newInputValues = [...inputValues]
     newInputValues[index] = value
     setInputValues(newInputValues)
@@ -78,13 +79,25 @@ export default function SignUp() {
   }
 
   return (
-    <div className="container">
+    <div className="w-content m-auto container-signUp">
       <div className="py-6">
         <Image src={Banner} alt="Logo" className=" w-full h-10 " />
       </div>
       <div className="flex justify-center space-x-4">
         {iconColors.map((color, index) => (
-          <div key={index} className={`w-16 h-16 square-full ${color}`}></div>
+          <div
+            key={index}
+            className={`w-16 h-16 square-full rounded-2xl ${color}`}
+          >
+            {inputValues[index] ? (
+              <Image
+                src={BanuddyIconImage}
+                alt={`Icon ${index + 1}`}
+                width={64}
+                height={64}
+              />
+            ) : null}
+          </div>
         ))}
       </div>
 
@@ -161,50 +174,3 @@ export default function SignUp() {
     </div>
   )
 }
-
-// export default function SignUp() {
-//   const router = useRouter()
-
-//   const handleSubmit = (e: SyntheticEvent) => {
-//     e.preventDefault()
-//     const target = e.target as typeof e.target & {
-//       email: { value: string }
-//       password: { value: string }
-//     }
-
-//     const { email, password } = target
-
-//     const options = {
-//       method: 'POST',
-//       headers: {
-//         'Content-type': 'application/json',
-//       },
-//       body: JSON.stringify({ title: email.value, body: password.value }),
-//     }
-
-//     fetch(process.env.NEXT_PUBLIC_API_URL + 'users', options)
-//       .then((res) => res.json())
-//       .then((result) => {
-//         console.log(result)
-//         router.refresh()
-//         router.push(`/login`)
-//       })
-//   }
-
-//   return (
-//     <>
-//       <h1>회원가입 페이지입니다</h1>
-//       <form onSubmit={handleSubmit}>
-//         <p>
-//           <input type="email" name="email" placeholder="이메일" />
-//         </p>
-//         <p>
-//           <input type="password" name="password" placeholder="비밀번호" />
-//         </p>
-//         <p>
-//           <input type="submit" value="회원가입" />
-//         </p>
-//       </form>
-//     </>
-//   )
-// }
