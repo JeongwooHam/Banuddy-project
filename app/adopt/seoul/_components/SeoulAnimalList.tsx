@@ -1,12 +1,56 @@
 import Pagination from '@/components/pagination/pagination'
 import OneSeoulAnimal from './OneSeoulAnimal'
 import AnimalFilter from '../../_components/Filter'
-import { responseList } from '@/app/api/adopt/seoul/seoul.type'
-import { getSeoulAnimalList } from '@/app/api/adopt/seoul/seoul.api'
+import {
+  Photo,
+  Row,
+  responseList,
+  responsePhoto,
+} from '@/app/api/adopt/seoul/seoul.type'
+import {
+  getSeoulAnimalImages,
+  getSeoulAnimalList,
+} from '@/app/api/adopt/seoul/seoul.api'
+import SampleImage from '/public/assets/sample.svg'
+
+interface mergedItem {
+  animalNo: number
+  list: Row
+  photo: Photo[] | undefined
+}
 
 const SeoulAnimalList: React.FC = async () => {
-  const animalListRes: responseList = await getSeoulAnimalList(1, 8)
-  console.log('res', animalListRes)
+  const animalListRes: responseList = await getSeoulAnimalList(1, 28)
+  const animalPhotoRes: responsePhoto = await getSeoulAnimalImages(1, 250)
+
+  const mergedArray: Array<{ animalNo: number; list: Row; photo?: Photo[] }> =
+    []
+
+  for (const row of animalListRes.TbAdpWaitAnimalView.row) {
+    const mergedItem: mergedItem = {
+      animalNo: row.ANIMAL_NO,
+      list: row,
+      photo: undefined,
+    }
+
+    const matchingPhoto = animalPhotoRes.TbAdpWaitAnimalPhotoView.row.filter(
+      (photo) => photo.ANIMAL_NO === row.ANIMAL_NO,
+    )
+
+    if (matchingPhoto) {
+      mergedItem.photo = [...matchingPhoto]
+    } else {
+      mergedItem.photo = [SampleImage]
+    }
+
+    mergedArray.push(mergedItem)
+  }
+
+  const animalWithPhoto = mergedArray.filter(
+    (animal) => typeof animal.photo !== undefined && animal.photo?.length,
+  )
+
+  console.log('merge', animalWithPhoto)
 
   return (
     <>
@@ -17,8 +61,12 @@ const SeoulAnimalList: React.FC = async () => {
             동물 공고 <span className="text-brown-200">{8}</span>건
           </div>
           <div className="grid grid-cols-4 grid-rows-2 gap-8">
-            {animalListRes?.TbAdpWaitAnimalView?.row.map((animal) => (
-              <OneSeoulAnimal animal={animal} key={Math.random() * 1000} />
+            {animalWithPhoto.slice(0, 8).map((animal) => (
+              <OneSeoulAnimal
+                animal={animal.list}
+                thumbnail={!!animal.photo && animal.photo[0].PHOTO_URL}
+                key={Math.random() * 1000}
+              />
             ))}
           </div>
         </div>

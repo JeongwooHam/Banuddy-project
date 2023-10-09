@@ -8,5 +8,5 @@ export const getSeoulAnimalList = (start_index: number, end_index: number) =>
 
 export const getSeoulAnimalImages = (start_index: number, end_index: number) =>
   GET<responsePhoto>(
-    `${process.env.NEXT_PUBLIC_SEOUL_URL}/${process.env.NEXT_PUBLIC_SEOUL_PHOTO_KEY}/json/TbAdpWaitAnimalPhotoView/${start_index}/${end_index}/`,
+    `${process.env.NEXT_PUBLIC_SEOUL_URL}/${process.env.NEXT_PUBLIC_SEOUL_PHOTO_KEY}/json/TbAdpWaitAnimalPhotoView/${start_index}/${end_index}`,
   )
