@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import LikeButton from './LikeButton'
 import { Shelter } from '@/app/api/shelter/shelter.type'
 
-export interface ShelterProps {
+interface ShelterProps {
   key: number
   shelter: Shelter
 }
@@ -36,8 +36,18 @@ const OneShelter: React.FC<ShelterProps> = ({ shelter }) => {
             <div className="flex justify-between">
               <div>
                 <div className="text-gray-300">
-                  월-금: {weekOprStime} - {weekOprEtime}, 주말:{' '}
-                  {weekendOprStime} - {weekendOprEtime}
+                  <span className="font-bold text-brown-200">운영시간</span>{' '}
+                  월-금:{' '}
+                  {!!weekOprStime && !!weekOprEtime
+                    ? weekOprStime + '-' + weekOprEtime
+                    : '정보 없음'}
+                  , 주말:{' '}
+                  {!!weekendOprStime &&
+                  !!weekendOprEtime &&
+                  weekendOprStime !== ':' &&
+                  weekendOprEtime !== ':'
+                    ? weekendOprStime + '-' + weekendOprEtime
+                    : '정보 없음'}
                 </div>
                 <div>{careTel}</div>
               </div>

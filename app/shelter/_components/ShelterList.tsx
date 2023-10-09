@@ -1,10 +1,12 @@
+'use client'
+
 import Pagination from '@/components/pagination/pagination'
 import OneShelter from './OneShelter'
 import { responseShelter } from '@/app/api/shelter/shelter.type'
 import { getShelterList } from '@/app/api/shelter/shelter.api'
 
 const ShelterList: React.FC = async () => {
-  const shelterRes: responseShelter = await getShelterList()
+  const shelterRes: responseShelter = await getShelterList(8)
 
   if (shelterRes) {
     const shelterArray = shelterRes.response.body.items.item
@@ -16,7 +18,7 @@ const ShelterList: React.FC = async () => {
         {shelterArray.map((shelter) => (
           <OneShelter shelter={shelter} key={Math.random() * 1000} />
         ))}
-        <Pagination totalPages={5} currentPage={1} />
+        <Pagination total={40} currentPage={1} limit={8} />
       </div>
     )
   }
