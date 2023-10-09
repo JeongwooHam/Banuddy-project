@@ -19,13 +19,13 @@ const NavBar = () => {
         </div>
       </div>
       <div className="w-3/4 flex justify-end space-x-2">
-        <Link href="/adopt/national">
+        <Link href="/adopt/seoul">
           <div className="nav-item">입양</div>
         </Link>
         <Link href="/shelter">
           <div className="nav-item">봉사</div>
         </Link>
-        <Link href="/my_page">
+        <Link href="/my_page/modify_info">
           <div className="nav-item">마이페이지</div>
         </Link>
         <Link href="/">

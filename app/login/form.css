@@ -23,3 +23,26 @@
   padding: 7px 7px;
   color: var(--brownColor-200);
 }
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--size-sm);
+  font-weight: var(--weight-bold);
+  color: #444;
+  width: 100%;
+  border-radius: 5px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+  padding: 7px 7px;
+
+  & img {
+    margin-right: 20px;
+  }
+  & > span {
+    font-family: 'Roboto', sans-serif;
+  }
+}

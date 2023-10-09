@@ -5,6 +5,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import FindAddress from '@/components/address/Address'
+import './style.css'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력하세요'),
@@ -51,11 +52,11 @@ const ApplicationForm: React.FC = () => {
   const onSubmit: SubmitHandler<ApplicationFormData> = (data) => {}
 
   return (
-    <div className="containerMain bg-[#eaebf0]">
+    <div className="w-content m-auto bg-[#eaebf0]">
       <div>
         <img src="/images/formHeader.png" />
       </div>
-      <div className="w-2/3 min-w-[700px] imgSection">
+      <div className="w-2/3 imgSection">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <h2 className="text-xl font-bold mb-2">개인정보 입력</h2>
@@ -81,7 +82,7 @@ const ApplicationForm: React.FC = () => {
             </div>
 
             <div className="flex flex-col mb-4">
-              <label className="mb-1">집주소(주소찾기)</label>
+              <label className="mb-1">집주소</label>
               <div className="h-[50px] flex align-center text-center gap-2">
                 <div>주소:{address}</div>
                 <FindAddress setter={setAddress} />
@@ -93,7 +94,7 @@ const ApplicationForm: React.FC = () => {
 
             <div className="flex flex-col mb-4">
               <label className="mb-1">개인정보 수집 및 이용에 대한 동의</label>
-              <div className="border rounded p-4">
+              <div className="border rounded p-4 bg-white">
                 개인정보처리에대한 안내 블라블라 개인정보처리에대한 안내
                 블라블라개인정보처리에대한 안내 블라블라개인정보처리에대한 안내
                 블라블라개인정보처리에대한 안내 블라블라개인정보처리에대한 안내
