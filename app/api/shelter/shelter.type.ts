@@ -17,7 +17,7 @@ export type responseShelter = {
 }
 
 export interface Body {
-  items: Shelter[]
+  items: { item: Shelter[] }
   numOfRows: number
   pageNo: number
   totalCount: number
