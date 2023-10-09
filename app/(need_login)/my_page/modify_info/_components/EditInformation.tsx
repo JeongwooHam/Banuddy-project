@@ -1,10 +1,10 @@
 import CustomInput from '@/components/input/input'
+import { useAtom } from 'jotai'
+import { editAtom } from './ModifyMyInformation'
 
-interface editProp {
-  setIsEditMode: (value: React.SetStateAction<boolean>) => void
-}
+const EditInformation: React.FC = () => {
+  const [, setIsEditMode] = useAtom(editAtom)
 
-const EditInformation: React.FC<editProp> = ({ setIsEditMode }) => {
   return (
     <>
       <div className="w-[700px] h-[185px] pt-[40px] pl-[40px] rounded-[10px] bg-gray-100">
@@ -31,7 +31,10 @@ const EditInformation: React.FC<editProp> = ({ setIsEditMode }) => {
       </div>
       <div className="mt-[5px] ml-[585px]">
         <button
-          onClick={() => setIsEditMode(false)}
+          onClick={() => {
+            setIsEditMode((prev: boolean) => !prev)
+            console.log('clicked')
+          }}
           className="bg-gray-300 text-white  font-[700] w-[115px] h-[47px]"
         >
           저장하기

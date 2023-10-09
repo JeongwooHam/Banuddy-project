@@ -8,19 +8,22 @@ import {
 } from '@/components/ui/select'
 
 export interface SelectProps {
-  selectValue: string[]
+  itemArray: string[]
+  setSelectVal: (value: React.SetStateAction<boolean>) => void
 }
 
-const CommonSelect: React.FC<SelectProps> = ({ selectValue }) => {
-  if (selectValue)
+const CommonSelect: React.FC<SelectProps> = ({ itemArray, setSelectVal }) => {
+  if (itemArray)
     return (
       <Select>
         <SelectTrigger className="w-[180px] bg-white">
           <SelectValue placeholder="선택" />
         </SelectTrigger>
         <SelectContent className="bg-white">
-          {selectValue.map((val) => (
-            <SelectItem value={val}>{val}</SelectItem>
+          {itemArray.map((val: string) => (
+            <SelectItem value={val} key={Math.random() * 1000}>
+              {val}
+            </SelectItem>
           ))}
         </SelectContent>
       </Select>

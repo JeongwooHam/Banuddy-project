@@ -2,17 +2,22 @@
 import { useState } from 'react'
 
 interface PaginationProps {
-  totalPages: number
+  total: number
   currentPage: number
+  limit: number
 }
 
-const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  total,
+  currentPage,
+  limit,
+}) => {
   const [activePage, setActivePage] = useState(currentPage)
+  const totalPage: number = Math.ceil(total / limit)
 
   const handlePageClick = (page: number) => {
     setActivePage(page)
   }
-  // 추후 아이콘으로 교체 예정
 
   return (
     <nav className="flex items-center justify-center mt-4">
@@ -31,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
           </button>
         </li>
 
-        {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+        {Array.from({ length: totalPage }, (_, index) => index + 1).map(
           (page) => (
             <li key={page}>
               <button
@@ -49,9 +54,9 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
         <li>
           <button
             onClick={() => handlePageClick(activePage + 1)}
-            disabled={activePage === totalPages}
+            disabled={activePage === totalPage}
             className={`w-[40px] h-[40px] px-3 py-2 rounded-full ${
-              activePage === totalPages
+              activePage === totalPage
                 ? 'text-gray-100 cursor-not-allowed'
                 : 'text-black'
             }`}

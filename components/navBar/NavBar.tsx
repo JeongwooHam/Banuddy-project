@@ -41,6 +41,12 @@ const NavBarDefault = () => {
           )}
         </Link>
       </div>
+      {session ? ( //세션 정보가 있으면 signOut()호출
+        <button onClick={() => signOut()}>Sign out</button>
+      ) : (
+        //세션 정보가 없으면 signIn()호출
+        <button onClick={() => signIn()}>Sign in</button>
+      )}
     </div>
   )
 }

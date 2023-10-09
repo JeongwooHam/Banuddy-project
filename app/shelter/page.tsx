@@ -6,7 +6,7 @@ export default function Shelter() {
   return (
     <div className="bg-primary-100 pb-[60px]">
       <Title />
-      <ShelterFilter />
+      {/* <ShelterFilter /> */}
       <ShelterList />
     </div>
   )

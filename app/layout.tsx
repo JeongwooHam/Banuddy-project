@@ -1,6 +1,7 @@
 import AuthContext from '@/context/AuthContext'
 import './globals.css'
 import type { Metadata } from 'next'
+import Providers from '@/lib/providers'
 
 export const metadata: Metadata = {
   title: 'Banuddy',
@@ -14,8 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html className="font-display">
-      <body>
-        <AuthContext>{children}</AuthContext>
+      <body suppressHydrationWarning={true}>
+        <Providers>
+          <AuthContext>
+            {children}
+          </AuthContext>
+        </Providers>
       </body>
     </html>
   )

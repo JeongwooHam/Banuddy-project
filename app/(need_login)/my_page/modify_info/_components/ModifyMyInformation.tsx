@@ -1,17 +1,19 @@
 'use client'
 
 import Title from '../../_components/Title'
-import { useState } from 'react'
 import EditInformation from './EditInformation'
+import { atom, useAtom } from 'jotai'
+
+export const editAtom = atom(false)
 
 const ModifyMyInformation = () => {
-  const [isEditMode, setIsEditMode] = useState(false)
+  const [isEditMode, setIsEditMode] = useAtom(editAtom)
 
   return (
     <div className="mb-[30px]">
       <Title text="나의 정보 변경" />
       {isEditMode ? (
-        <EditInformation setIsEditMode={setIsEditMode} />
+        <EditInformation />
       ) : (
         <>
           <div className="w-[700px] h-[185px] pt-[45px] pl-[40px] rounded-[10px] bg-gray-100">
@@ -26,7 +28,7 @@ const ModifyMyInformation = () => {
           </div>
           <div className="mt-[5px] ml-[585px]">
             <button
-              onClick={() => setIsEditMode(true)}
+              onClick={() => setIsEditMode((prev: boolean) => !prev)}
               className="bg-gray-300 text-white font-[700] w-[115px] h-[47px]"
             >
               수정하기

@@ -1,10 +1,10 @@
 import CustomInput from '@/components/input/input'
+import { useAtom } from 'jotai'
+import { editAtom } from './UserInfo'
 
-interface editProp {
-  setIsEditMode: (value: React.SetStateAction<boolean>) => void
-}
+const EditMode: React.FC = () => {
+  const [, setIsEditMode] = useAtom(editAtom)
 
-const EditMode: React.FC<editProp> = ({ setIsEditMode }) => {
   return (
     <div className="m-center">
       <CustomInput
