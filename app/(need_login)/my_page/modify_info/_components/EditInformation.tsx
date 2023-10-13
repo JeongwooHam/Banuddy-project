@@ -33,7 +33,6 @@ const EditInformation: React.FC = () => {
         <button
           onClick={() => {
             setIsEditMode((prev: boolean) => !prev)
-            console.log('clicked')
           }}
           className="bg-gray-300 text-white  font-[700] w-[115px] h-[47px]"
         >

@@ -3,9 +3,8 @@
 import OneCard from '@/components/card/card'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import type { Photo, Row } from '@/app/api/adopt/seoul/seoul.type'
+import type { Photo, Row, mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 import { atom, useAtom } from 'jotai'
-import { mergedItem } from './SeoulAnimalList'
 
 interface animalProp {
   key: number
