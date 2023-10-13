@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { FC } from 'react'
+import Styles from './styles'
 
-export interface ButtonProps {
+type ButtonTypes = {
   label: string
+  outlined?: boolean
   onClick: () => void
-  disabled?: boolean
+  buttonStyle?: string
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, disabled }) => {
+export const Button: FC<ButtonTypes> = ({
+  onClick,
+  label = 'btnText',
+  outlined,
+  buttonStyle,
+}) => {
+  const isOutlined = outlined ? Styles.OUTLINED_BUTTON : Styles.CONTAINED_BUTTON
   return (
-    <button
-      onClick={onClick}
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      disabled={disabled}
-    ></button>
+    <button onClick={onClick} className={isOutlined + buttonStyle}>
+      <span>{label}</span>
+    </button>
   )
 }
-
-export default Button

@@ -1,5 +1,7 @@
+import AuthContext from '@/context/AuthContext'
 import './globals.css'
 import type { Metadata } from 'next'
+import Providers from '@/lib/providers'
 
 export const metadata: Metadata = {
   title: 'Banuddy',
@@ -12,8 +14,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <body>{children}</body>
+    <html className="font-display">
+      <body suppressHydrationWarning={true}>
+        <Providers>
+          <AuthContext>
+            {children}
+          </AuthContext>
+        </Providers>
+      </body>
     </html>
   )
 }
