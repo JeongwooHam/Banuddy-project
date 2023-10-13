@@ -14,16 +14,16 @@ const AnimalDetail: React.FC<animalProps> = ({ type }) => {
 
   if (targetAnimal) {
     const target = targetAnimal as mergedItem
-    const { SPCS, INTRCN_CN } = target.list
-
-    console.log(stringToHTML(INTRCN_CN))
+    // console.log(target.list.INTRCN_MVP_URL.split('be/')[1])
+    const { SPCS, INTRCN_CN, INTRCN_MVP_URL } = target.list
+    const youtube = INTRCN_MVP_URL.split('be/')[1]
 
     const dynamicClassName = `border-t-4 border-b-4 border-primary-300 bg-primary-100`
 
     return (
       <div className={dynamicClassName}>
         <div className="w-content m-center ">
-          {/* <AnimalVideo /> */}
+          {INTRCN_MVP_URL && <AnimalVideo src={youtube} />}
           <div className="text-center m-[50px] leading-[3rem]">
             {stringToHTML(INTRCN_CN)}
           </div>
