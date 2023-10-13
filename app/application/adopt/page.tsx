@@ -61,6 +61,15 @@ const ApplicationForm: React.FC = () => {
         <div>
           <img src="/images/formHeader.png" />
         </div>
+        <div className="flex flex-col text-center">
+          <h2 className="text-xl font-bold mb-2 pb-[5px] pt-[10px]">
+            입양 신청
+          </h2>
+          <p className="pb-[40px]">
+            평생 책임질 준비가 되셨나요? <br />
+            동물들에게 입양은 마지막 기회이자 유일한 희망입니다.
+          </p>
+        </div>
         <div className="pl-[80px] ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
@@ -358,6 +367,15 @@ const ApplicationForm: React.FC = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div className="flex flex-col text-center mt-[50px] mb-[30px] text-sm">
+        저희 페이지는 직접 유기동물의 입양을 진행하지 않으며, 입력하신
+        개인정보는 저장되지 않습니다. <br /> 입양에 관심이 있으신 분들은 위의
+        연락처를 통해 각 보호소의 웹사이트나 연락처로 직접 문의하시기 바랍니다.{' '}
+        <br />
+        반려동물 입양은 한 생명에 대한 결정이므로, 책임감과 충분한 사전 조사를
+        거친 뒤 결정을 내려주시길 부탁드립니다. <br />
+        유기동물에 관심을 가지고 소중한 선택을 하신 여러분들께 감사드립니다.
       </div>
       <button
         className="submit-btn"
