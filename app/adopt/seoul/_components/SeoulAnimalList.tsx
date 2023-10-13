@@ -12,7 +12,6 @@ import {
   getSeoulAnimalList,
 } from '@/app/api/adopt/seoul/seoul.api'
 import SampleImage from '/public/assets/sample.svg'
-import { useEffect, useState } from 'react'
 
 export interface mergedItem {
   animalNo: number
@@ -21,16 +20,19 @@ export interface mergedItem {
 }
 
 const SeoulAnimalList: React.FC = async () => {
-  const [animalListRes, setAnimalListRes] = useState<responseList>()
-  const [animalPhotoRes, setAnimalPhotoRes] = useState<responsePhoto>()
+  // const [animalListRes, setAnimalListRes] = useState<responseList>()
+  // const [animalPhotoRes, setAnimalPhotoRes] = useState<responsePhoto>()
 
-  useEffect(() => {
-    const fetch = async () => {
-      setAnimalListRes(await getSeoulAnimalList(1, 28))
-      setAnimalPhotoRes(await getSeoulAnimalImages(1, 250))
-    }
-    fetch()
-  }, [])
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     setAnimalListRes(await getSeoulAnimalList(1, 28))
+  //     setAnimalPhotoRes(await getSeoulAnimalImages(1, 250))
+  //   }
+  //   fetch()
+  // }, [])
+
+  const animalListRes = await getSeoulAnimalList(1, 28)
+  const animalPhotoRes = await getSeoulAnimalImages(1, 250)
 
   const mergedArray: Array<{ animalNo: number; list: Row; photo?: Photo[] }> =
     []
