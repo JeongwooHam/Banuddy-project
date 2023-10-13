@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai'
 import AnimalVideo from './AnimalVideo'
-import { animalAtom } from '../../_components/OneSeoulAnimal'
-import { mergedItem } from '../../_components/SeoulAnimalList'
+import { animalAtom } from '../../../_components/OneSeoulAnimal'
+import { mergedItem } from '../../../_components/SeoulAnimalList'
 import { colorMatch } from '@/constants/colorMatch'
 import { stringToHTML } from '@/lib/stringToHtml'
 
