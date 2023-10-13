@@ -14,7 +14,6 @@ const AnimalDetail: React.FC<animalProps> = ({ type }) => {
 
   if (targetAnimal) {
     const target = targetAnimal as mergedItem
-    // console.log(target.list.INTRCN_MVP_URL.split('be/')[1])
     const { SPCS, INTRCN_CN, INTRCN_MVP_URL } = target.list
     const youtube = INTRCN_MVP_URL.split('be/')[1]
 

@@ -6,6 +6,7 @@ import { useAtom } from 'jotai'
 import { animalAtom } from '../../_components/OneSeoulAnimal'
 import { mergedItem } from '../../_components/SeoulAnimalList'
 import { colorMatch } from '@/constants/colorMatch'
+import getPeriod from '@/lib/getPeriod'
 
 const AnimalInfoText: React.FC = () => {
   const [targetAnimal] = useAtom(animalAtom)
@@ -24,6 +25,10 @@ const AnimalInfoText: React.FC = () => {
       { key: '입소날짜', value: ENTRNC_DATE },
       { key: '보호소명', value: NM.split('(')[1].split(')')[0] },
     ]
+
+    const date = ENTRNC_DATE.replaceAll('-', '')
+    const period = getPeriod(date, 'YYYYMMDD')
+    console.log('date', period)
 
     const router = useRouter()
 
@@ -47,7 +52,7 @@ const AnimalInfoText: React.FC = () => {
         <div className="text-[20px] mt-[27px]">
           보호소에 입소한지{' '}
           <span className="text-[25px] p-[10px] pl-[20px] pr-[20px] ml-[10px] mr-[10px] font-bold border-[3px] border-primary-300 rounded-2xl">
-            29일
+            {period.split(' ')[0]}
           </span>{' '}
           되었어요.
         </div>
