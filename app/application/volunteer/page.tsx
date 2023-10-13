@@ -5,7 +5,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import FindAddress from '@/components/address/Address'
-import './style.css'
+import '../style.css'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력하세요'),
@@ -16,9 +16,9 @@ const schema = yup.object().shape({
   isFemale: yup.boolean().oneOf([true], '성별을 선택해주세요'),
   isMarried: yup.boolean().oneOf([true], '결혼여부를 선택해주세요'),
   address: yup.string().required('집주소를 입력하세요'),
-  petName: yup.string().required('나이를 입력해주세요'),
-  shelterName: yup.string().required('나이를 입력해주세요'),
-  shelterContact: yup.string().required('나이를 입력해주세요'),
+  applicants: yup.string().required('희망 참가 인원을 입력해주세요'),
+  shelterName: yup.string().required('보호소명을 입력해주세요'),
+  shelterContact: yup.string().required('보호소 연락처를 입력해주세요'),
   consentText: yup
     .string()
     .required('개인정보 수집 및 이용에 대한 동의를 입력하세요'),
@@ -34,7 +34,7 @@ interface ApplicationFormData {
   isFemale: boolean
   isMarried: boolean
   address: string
-  petName: string
+  applicants: number
   shelterName: string
   shelterContact: string
   consentText: string
@@ -310,21 +310,7 @@ const ApplicationForm: React.FC = () => {
               <h2 className="text-xl font-bold mb-2 pb-[20px] pt-[30px]">
                 입양정보 입력
               </h2>
-              <div className="flex mb-4">
-                <label className="label-application">희망동물 이름</label>
-                <Controller
-                  name="petName"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      {...field}
-                      type="text"
-                      className="input-application"
-                      placeholder="희망동물 이름"
-                    />
-                  )}
-                />
-              </div>
+
               <div className="flex  mb-4">
                 <label className="label-application">보호소명</label>
                 <Controller
@@ -355,6 +341,21 @@ const ApplicationForm: React.FC = () => {
                   )}
                 />
               </div>
+              <div className="flex mb-4">
+                <label className="label-application">희망참가인원</label>
+                <Controller
+                  name="applicants"
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      {...field}
+                      type="text"
+                      className="input-application"
+                      placeholder="희망참가인원"
+                    />
+                  )}
+                />
+              </div>
             </div>
           </form>
         </div>
@@ -364,7 +365,7 @@ const ApplicationForm: React.FC = () => {
         type="submit"
         style={{ display: 'block', margin: '0 auto' }}
       >
-        제출하기
+        신청하기
       </button>
     </>
   )
