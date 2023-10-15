@@ -2,8 +2,8 @@ import Image from 'next/image'
 import ImageSlide from './ImageSlide'
 import Cat from '/public/icons/cat.svg'
 import { useAtom } from 'jotai'
-import { animalAtom } from '../../_components/OneSeoulAnimal'
-import { mergedItem } from '../../_components/SeoulAnimalList'
+import { animalAtom } from '../../../_components/OneSeoulAnimal'
+import { mergedItem } from '../../../_components/SeoulAnimalList'
 import State from '@/constants/adoptState'
 import { colorMatch } from '@/constants/colorMatch'
 
@@ -12,7 +12,9 @@ const AnimalPolaroid: React.FC = () => {
 
   if (targetAnimal) {
     const target = targetAnimal as mergedItem
-    const { SPCS, NM, ADP_STTUS } = target.list
+
+    const { NM, ADP_STTUS } = target?.list
+
     const dynamicClassName = `absolute top-[80px] left-[90px] w-[75px] h-[75px] bg-primary-300 rounded-full p-[10px]`
     return (
       <div className="w-[500px] border-solid border-[1px] border-gray-100 shadow relative">
@@ -32,6 +34,8 @@ const AnimalPolaroid: React.FC = () => {
         </div>
       </div>
     )
+  } else {
+    return <div>:)</div>
   }
 }
 

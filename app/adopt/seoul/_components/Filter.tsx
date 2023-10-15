@@ -1,5 +1,3 @@
-'use client'
-
 import CommonSelect from '@/components/select/select'
 import CustomInput from '@/components/input/input'
 import { Button } from '@/components/button/Button'
