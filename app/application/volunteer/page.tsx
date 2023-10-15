@@ -295,7 +295,7 @@ const ApplicationForm: React.FC = () => {
                   name="desiredDate"
                   control={control}
                   render={({ field }) => (
-                    <div className="flex items-center">
+                    <div className="flex items-center" onClick={toggleCalendar}>
                       <DatePicker
                         className="input-application-date"
                         placeholderText="희망 일자"
@@ -311,7 +311,6 @@ const ApplicationForm: React.FC = () => {
                         src="/icons/calendar.svg"
                         alt="Calendar"
                         className="w-[35px] ml-[10px]"
-                        onClick={toggleCalendar}
                       />
                     </div>
                   )}

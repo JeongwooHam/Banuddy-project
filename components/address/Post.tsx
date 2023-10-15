@@ -13,6 +13,8 @@ const Post: React.FC<{
       fullAddress = `${data.sido} ${data.sigungu} ${data.bname}`
     }
 
+    console.log('Address:', fullAddress)
+
     setAddress(fullAddress)
     setPopup(false)
   }
