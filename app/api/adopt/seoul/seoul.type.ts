@@ -47,3 +47,9 @@ export interface Photo {
   PHOTO_NO: number
   PHOTO_URL: string
 }
+
+export interface mergedItem {
+  animalNo: number
+  list: Row
+  photo?: Photo[] | undefined
+}

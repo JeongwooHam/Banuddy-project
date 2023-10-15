@@ -1,5 +1,3 @@
-'use client'
-
 import Title from '../_components/Title'
 
 import SeoulAnimalList from './_components/SeoulAnimalList'
