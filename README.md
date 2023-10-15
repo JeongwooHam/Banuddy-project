@@ -52,7 +52,23 @@
 
 <br>
 <h2>⚙️ 사용 기술 스택</h2>
-추후 추가 예정 
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/jotai-000000?style=for-the-badge&logo=jotai&logoColor=white">
+<img src="https://img.shields.io/badge/NextAuth.js-6C47FF?style=for-the-badge&logo=NextAuth.js&logoColor=white">
+<img src="https://img.shields.io/badge/reacthookform-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white">
+<img src="https://img.shields.io/badge/yup-9F55FF?style=for-the-badge&logo=yup&logoColor=white">
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img src="https://img.shields.io/badge/shadcnUI-000000?style=for-the-badge&logo=shadcnUI&logoColor=white">
+<img src="https://img.shields.io/badge/Framer-0055FF?style=for-the-badge&logo=Framer&logoColor=white">
+<img src="https://img.shields.io/badge/slick-3498DB?style=for-the-badge&logo=slick&logoColor=white">
+<img src="https://img.shields.io/badge/react daum postcode-FFDC00?style=for-the-badge">
+<img src="https://img.shields.io/badge/moment.js-A1CCD1?style=for-the-badge&logo=moment.js&logoColor=black">
+<img src="https://img.shields.io/badge/reactyoutube-FF0000?style=for-the-badge&logo=youtube&logoColor=white">
+<img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white">
+<img src="https://img.shields.io/badge/Prettier-2D9FD9?style=for-the-badge&logo=Prettier&logoColor=black">
+<img src="https://img.shields.io/badge/husky-ED1C24?style=for-the-badge&logo=husky&logoColor=black">
+
 
 <br>
 
