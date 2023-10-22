@@ -2,6 +2,7 @@ import { GET } from '../../@core'
 import type {
   Photo,
   Row,
+  mergeProps,
   mergedItem,
   responseList,
   responsePhoto,
@@ -17,20 +18,13 @@ export const getSeoulAnimalImages = (start_index: number, end_index: number) =>
     `${process.env.NEXT_PUBLIC_SEOUL_URL}/${process.env.NEXT_PUBLIC_SEOUL_PHOTO_KEY}/json/TbAdpWaitAnimalPhotoView/${start_index}/${end_index}`,
   )
 
-export const getMergedData = async (listEnd: number, imageEnd: number) => {
-  // const [animalListRes, setAnimalListRes] = useState<responseList>()
-  // const [animalPhotoRes, setAnimalPhotoRes] = useState<responsePhoto>()
-
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     setAnimalListRes(await getSeoulAnimalList(1, 28))
-  //     setAnimalPhotoRes(await getSeoulAnimalImages(1, 250))
-  //   }
-  //   fetch()
-  // }, [])
-
+export const getMergedData = async ({
+  listEnd,
+  photoEnd,
+  filter,
+}: mergeProps) => {
   const animalListRes = await getSeoulAnimalList(1, listEnd)
-  const animalPhotoRes = await getSeoulAnimalImages(1, imageEnd)
+  const animalPhotoRes = await getSeoulAnimalImages(1, photoEnd)
 
   const mergedArray: Array<{ animalNo: number; list: Row; photo?: Photo[] }> =
     []
@@ -60,9 +54,14 @@ export const getMergedData = async (listEnd: number, imageEnd: number) => {
     mergedArray.push(mergedItem)
   }
 
-  const animalWithPhoto = mergedArray.filter(
+  let animalWithPhoto = mergedArray.filter(
     (animal) => typeof animal.photo !== undefined && animal.photo?.length,
   )
+
+  if (filter && filter?.cate !== '전체')
+    animalWithPhoto = animalWithPhoto.filter(
+      (animal) => animal.list.SPCS === filter.cate,
+    )
 
   return animalWithPhoto
 }

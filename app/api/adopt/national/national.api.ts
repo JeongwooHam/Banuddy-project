@@ -17,7 +17,9 @@ export const getSigungu = (sido: number) =>
     }&upr_cd=${sido + ''}&_type=json`,
   )
 
-export const getAbandonmentPublic = () =>
+export const getAbandonmentPublic = (pageNo: number) =>
   GET<responseAbandonedPublic>(
-    `${process.env.NEXT_PUBLIC_NATIONAL_ANIMAL_URL}?serviceKey=${process.env.NEXT_PUBLIC_NATIONAL_KEY}&_type=json`,
+    `${process.env.NEXT_PUBLIC_NATIONAL_ANIMAL_URL}?serviceKey=${
+      process.env.NEXT_PUBLIC_NATIONAL_KEY
+    }&_type=json&numOfRows=8&pageNo=${pageNo + ''}`,
   )

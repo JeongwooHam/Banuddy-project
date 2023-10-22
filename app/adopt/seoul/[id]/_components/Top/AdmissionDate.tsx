@@ -1,12 +1,11 @@
-import getPeriod from '@/lib/getPeriod'
+import { getDiff } from '@/lib/getDiff'
 
 interface DateProps {
   date: string
 }
 
 const AdmissionDate: React.FC<DateProps> = ({ date }) => {
-  const modified = date.replaceAll('-', '')
-  const period = getPeriod(modified, 'YYYYMMDD')
+  const period = getDiff(date)
 
   return (
     <div className="text-[20px] mt-[27px]">
