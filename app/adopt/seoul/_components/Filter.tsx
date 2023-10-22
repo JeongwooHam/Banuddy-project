@@ -4,25 +4,32 @@ import { Button } from '@/components/button/Button'
 import { adoptState, animalSex, fosterState } from '@/constants/filterValue'
 import { useState } from 'react'
 import CategorySelect, { categoryAtom } from './select/category'
-import { atom, useAtom } from 'jotai'
+import { atom, useAtom, useAtomValue } from 'jotai'
 
 export const filterAtom = atom({
-  category: '',
+  cate: '',
   sex: '',
-  adoptState: '',
-  fosterState: '',
+  adopt: '',
+  foster: '',
   name: '',
+  isSubmit: false,
 })
 
 const SeoulAnimalFilter: React.FC = () => {
   const [filterValue, setFilterValue] = useAtom(filterAtom)
 
-  const [selectVal, setSelectVal] = useState({})
-  console.log('select', selectVal)
-  const [category, setCategory] = useAtom(categoryAtom)
+  const cate = useAtomValue(categoryAtom)
 
-  const handleSearch = () => {
-    setCategory(category)
+  const handleFilter = () => {
+    console.log('cate', cate)
+    setFilterValue({
+      cate: cate,
+      sex: '',
+      adopt: '',
+      foster: '',
+      name: '',
+      isSubmit: true,
+    })
   }
 
   return (
@@ -32,7 +39,7 @@ const SeoulAnimalFilter: React.FC = () => {
           <div className="text-base font-bold mb-2">동물구분</div>
           <CategorySelect />
         </div>
-        <div>
+        {/* <div>
           <div className="text-base font-bold mb-2">성별</div>
           <CommonSelect itemArray={animalSex} setSelectVal={setSelectVal} />
         </div>
@@ -43,7 +50,7 @@ const SeoulAnimalFilter: React.FC = () => {
         <div>
           <div className="text-base font-bold mb-2">임시보호상태</div>
           <CommonSelect itemArray={fosterState} setSelectVal={setSelectVal} />
-        </div>
+        </div> */}
       </div>
       <div>
         <div className="text-base font-bold mt-5 mb-2">이름</div>
@@ -56,7 +63,7 @@ const SeoulAnimalFilter: React.FC = () => {
           <Button
             label="검색"
             outlined={false}
-            onClick={handleSearch}
+            onClick={handleFilter}
             buttonStyle="w-[2px] h-[40px] bg-brown-200 text-white ml-[10px] text-md leading-[10px] border-0"
           />
         </div>

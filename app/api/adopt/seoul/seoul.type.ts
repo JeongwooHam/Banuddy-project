@@ -48,6 +48,19 @@ export interface Photo {
   PHOTO_URL: string
 }
 
+export interface mergeProps {
+  listEnd: number
+  photoEnd: number
+  filter?: {
+    cate: string
+    sex: string
+    adopt: string
+    foster: string
+    name: string | null
+    isSubmit: boolean
+  }
+}
+
 export interface mergedItem {
   animalNo: number
   list: Row

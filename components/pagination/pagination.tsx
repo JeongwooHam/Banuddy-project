@@ -1,5 +1,5 @@
 'use client'
-import { SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import Left from '/public/icons/left.svg'
 import LeftTwice from '/public/icons/lefttwice.svg'
 import Right from '/public/icons/right.svg'
@@ -32,7 +32,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <ul className="flex ">
         <li>
           <button
-            onClick={() => handlePageClick(activePage - 1)}
+            onClick={() => handlePageClick(activePage - (activePage - 1))}
             disabled={activePage === 1}
             className={`w-[40px] h-[40px] px-3 py-2 rounded-full ${
               activePage === 1
@@ -87,7 +87,9 @@ const Pagination: React.FC<PaginationProps> = ({
         </li>
         <li>
           <button
-            onClick={() => handlePageClick(activePage + 1)}
+            onClick={() =>
+              handlePageClick(activePage + (totalPage - activePage))
+            }
             disabled={activePage === totalPage}
             className={`w-[40px] h-[40px] px-3 py-2 rounded-full ${
               activePage === totalPage

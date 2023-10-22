@@ -6,6 +6,7 @@ import { getMergedData } from '@/app/api/adopt/seoul/seoul.api'
 import { useEffect, useState } from 'react'
 import { atom, useAtom } from 'jotai'
 import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
+import SeoulAnimalFilter, { filterAtom } from './Filter'
 
 const dataAtom = atom<mergedItem[] | null>(null)
 const pageAtom = atom<number>(1)
@@ -13,9 +14,13 @@ const pageAtom = atom<number>(1)
 const SeoulAnimalList: React.FC = () => {
   const [data, setData] = useAtom(dataAtom)
   const [page, setPage] = useAtom(pageAtom)
+  const [filterValue, setFilterValue] = useAtom(filterAtom)
 
   useEffect(() => {
-    getMergedData(28, 250).then((res) => {
+    const prop = filterValue.isSubmit
+      ? { listEnd: 28, photoEnd: 250, filter: filterValue }
+      : { listEnd: 28, photoEnd: 250 }
+    getMergedData(prop).then((res) => {
       if (res) {
         const response: mergedItem[] = res
         setData(response)
@@ -27,13 +32,6 @@ const SeoulAnimalList: React.FC = () => {
     setPage(n)
   }
 
-  // const animalWithPhoto = await getMergedData(28, 250)
-
-  // //pagination
-  // const [page, setPage] = useState(1)
-  // let pageRange = [0, 8]
-  // if (page) pageRange = [8 * (page - 1), 8 * page]
-
   // const [category] = useAtom(categoryAtom)
   // const filteredList = animalWithPhoto.filter((animal) => {
   //   if (category) return animal.list.SPCS === category
@@ -43,7 +41,7 @@ const SeoulAnimalList: React.FC = () => {
   if (data)
     return (
       <>
-        {/* <AnimalFilter isSeoul={true} /> */}
+        <SeoulAnimalFilter />
         <div className="w-content m-auto mt-[50px]">
           <div>
             <div className="font-bold mb-10 text-[24px]">
