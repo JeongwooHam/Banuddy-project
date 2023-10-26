@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/comm/getImage/**',
       },
+      {
+        protocol: 'http',
+        hostname: 'www.animal.go.kr',
+        port: '',
+        pathname: '/files/shelter/**',
+      },
     ],
   },
 }

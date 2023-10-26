@@ -6,10 +6,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { animalcategory } from '@/constants/filterValue'
 import { atom, useAtom } from 'jotai'
 
-export const categoryAtom = atom('')
+export const categoryAtom = atom('전체')
 
 const CategorySelect = () => {
   const [, setCategory] = useAtom(categoryAtom)
@@ -20,11 +19,15 @@ const CategorySelect = () => {
         <SelectValue placeholder="선택" />
       </SelectTrigger>
       <SelectContent className="bg-white">
-        {animalcategory.map((val: string) => (
-          <SelectItem value={val} key={Math.random() * 1000}>
-            {val}
-          </SelectItem>
-        ))}
+        <SelectItem value={'전체'} key={Math.random() * 1000}>
+          전체
+        </SelectItem>
+        <SelectItem value={'DOG'} key={Math.random() * 1000}>
+          개
+        </SelectItem>
+        <SelectItem value={'CAT'} key={Math.random() * 1000}>
+          고양이
+        </SelectItem>
       </SelectContent>
     </Select>
   )

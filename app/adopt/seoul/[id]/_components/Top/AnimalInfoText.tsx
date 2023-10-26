@@ -3,10 +3,10 @@
 import LikeButton from './LikeButton'
 import { useAtom } from 'jotai'
 import { animalAtom } from '../../../_components/OneSeoulAnimal'
-import { mergedItem } from '../../../_components/SeoulAnimalList'
 import AdmissionDate from './AdmissionDate'
 import RouteButton from './RouteButton'
 import InformationList from './InformationList'
+import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 
 const AnimalInfoText: React.FC = () => {
   const [targetAnimal] = useAtom(animalAtom)
