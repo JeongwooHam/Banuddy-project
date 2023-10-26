@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import FindAddress from '@/components/address/Address'
 import '../style.css'
 import Modal from '@/components/modal/Modal'
+import { useSearchParams } from 'next/navigation'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력하세요'),
@@ -23,7 +24,7 @@ const schema = yup.object().shape({
     .required('결혼여부를 선택하세요')
     .oneOf(['married', 'unmarried'], '결혼여부를 선택하세요'),
   address: yup.string().required('집주소를 입력하세요'),
-  petName: yup.string().required('희망동물 이름을 입력해주세요'),
+  animalName: yup.string().required('희망동물 이름을 입력해주세요'),
   shelterName: yup.string().required('보호소명을 입력해주세요'),
   consentText: yup
     .string()
@@ -40,7 +41,7 @@ interface ApplicationFormData {
   isFemale: string
   isMarried: string
   address: string
-  petName: string
+  animalName: string
   shelterName: string
   consentText: string
   consentCheckbox: boolean
@@ -49,6 +50,9 @@ interface ApplicationFormData {
 const ApplicationForm: React.FC = () => {
   const [address, setAddress] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const searchParams = useSearchParams()
+  const animalName = searchParams.get('animalName')
+  const shelterName = searchParams.get('shelterName')
 
   const {
     handleSubmit,
@@ -58,6 +62,10 @@ const ApplicationForm: React.FC = () => {
   } = useForm<ApplicationFormData>({
     resolver: yupResolver(schema) as any,
     // any 이유를 아직 모르겠음.
+    defaultValues: {
+      animalName: animalName || '',
+      shelterName: shelterName || '',
+    },
   })
 
   const onSubmit: SubmitHandler<ApplicationFormData> = async (data) => {}
@@ -227,17 +235,31 @@ const ApplicationForm: React.FC = () => {
 
               <div className="flex flex mb-4">
                 <label className="label-application">집주소</label>
-                <Controller
-                  name="address"
-                  control={control}
-                  defaultValue={address}
-                  render={({ field }) => (
-                    <div className="h-[50px] flex align-center text-center gap-2">
-                      <div>{field.value}</div> {/* 값표시 */}
-                      <FindAddress setter={setAddress} />
-                    </div>
-                  )}
-                />
+                <div className="h-[50px] flex align-center text-center gap-2">
+                  <Controller
+                    name="address"
+                    control={control}
+                    render={({ field }) => (
+                      <div className="flex items-center gap-2">
+                        <input
+                          {...field}
+                          type="text"
+                          readOnly
+                          className={`input-application ${
+                            errors?.address ? 'border-red-500' : ''
+                          }`}
+                          value={address}
+                        />
+                        <FindAddress
+                          setter={(newAddress) => {
+                            setAddress(newAddress)
+                            field.onChange(newAddress)
+                          }}
+                        />
+                      </div>
+                    )}
+                  />
+                </div>
                 {errors?.address && (
                   <p className="text-red-500">{errors.address.message}</p>
                 )}
@@ -348,7 +370,7 @@ const ApplicationForm: React.FC = () => {
               <div className="flex mb-4">
                 <label className="label-application">희망동물 이름</label>
                 <Controller
-                  name="petName"
+                  name="animalName"
                   control={control}
                   render={({ field }) => (
                     <input
@@ -359,8 +381,8 @@ const ApplicationForm: React.FC = () => {
                     />
                   )}
                 />
-                {errors?.petName && (
-                  <p className="text-red-500">{errors.petName.message}</p>
+                {errors?.animalName && (
+                  <p className="text-red-500">{errors.animalName.message}</p>
                 )}
               </div>
               <div className="flex  mb-4">

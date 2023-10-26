@@ -13,7 +13,7 @@ export default function MyPageLayout({
   return (
     <>
       <NavBarDefault />
-      <div className="relative min-h-[1000px]">
+      <div className="relative min-h-[1000px] flex justify-center">
         <div className="absolute inset-0">
           <Image
             src={background}
@@ -23,7 +23,7 @@ export default function MyPageLayout({
             objectPosition="center"
           />
         </div>
-        <div className="flex z-100 absolute h-[90%] mt-[40px] bg-white rounded left-[22%] pt-[50px] ">
+        <div className="flex z-100 absolute h-[90%] mt-[40px] bg-white rounded pt-[50px] ">
           <div className="z-1 h-full">
             <NavBar />
           </div>
