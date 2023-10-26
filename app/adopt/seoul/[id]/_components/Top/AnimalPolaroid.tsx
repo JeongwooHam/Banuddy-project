@@ -5,7 +5,6 @@ import { useAtom } from 'jotai'
 import { animalAtom } from '../../../_components/OneSeoulAnimal'
 import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 import State from '@/constants/adoptState'
-import { colorMatch } from '@/constants/colorMatch'
 
 const AnimalPolaroid: React.FC = () => {
   const [targetAnimal] = useAtom(animalAtom)

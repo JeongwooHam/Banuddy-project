@@ -25,7 +25,6 @@ const schema = yup.object().shape({
   address: yup.string().required('집주소를 입력하세요'),
   petName: yup.string().required('희망동물 이름을 입력해주세요'),
   shelterName: yup.string().required('보호소명을 입력해주세요'),
-  shelterContact: yup.string().required('보호소 연락처를 입력해주세요'),
   consentText: yup
     .string()
     .required('개인정보 수집 및 이용에 대한 동의를 입력하세요'),
@@ -43,7 +42,6 @@ interface ApplicationFormData {
   address: string
   petName: string
   shelterName: string
-  shelterContact: string
   consentText: string
   consentCheckbox: boolean
 }
@@ -381,26 +379,6 @@ const ApplicationForm: React.FC = () => {
                 />
                 {errors?.shelterName && (
                   <p className="text-red-500">{errors.shelterName.message}</p>
-                )}
-              </div>
-              <div className="flex  mb-4">
-                <label className="label-application ">보호소 연락처</label>
-                <Controller
-                  name="shelterContact"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      {...field}
-                      type="text"
-                      className="input-application"
-                      placeholder="보호소 연락처"
-                    />
-                  )}
-                />
-                {errors?.shelterContact && (
-                  <p className="text-red-500">
-                    {errors.shelterContact.message}
-                  </p>
                 )}
               </div>
             </div>

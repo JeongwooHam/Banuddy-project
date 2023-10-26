@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
 import { useAtom } from 'jotai'
 import { animalAtom } from '../../../_components/OneSeoulAnimal'
-import { mergedItem } from '../../../_components/SeoulAnimalList'
+import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 
 function ImageSlide() {
   const settings = {
