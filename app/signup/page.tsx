@@ -89,6 +89,9 @@ export default function SignUp() {
         })
         if (error) throw error
         if (signUpResponse?.user) {
+          alert(
+            '메일로 인증링크가 발송되었습니다. 해당 링크를 클릭하여 본인인증을 완료해주세요!',
+          )
           router.push('/login')
         }
       } catch (error) {
@@ -96,17 +99,6 @@ export default function SignUp() {
       }
     }
   }
-
-  // const userVerify = async (data: { email: any; password: any }) => {
-  //   try {
-  //     const { data: signUpResponse, error } = await supabase.auth.signUp({
-  //       email: data.email,
-  //       password: data.password,
-  //     })
-  //   } catch (error) {
-  //     console.log('error', error)
-  //   }
-  // }
 
   return (
     <div className="w-content m-auto container-signUp">
@@ -157,13 +149,6 @@ export default function SignUp() {
           {errors.email && (
             <span className="input-error-message">{errors.email.message}</span>
           )}
-          {/* <button
-            onClick={() => {
-              userVerify
-            }}
-          >
-            본인인증받기
-          </button> */}
           <input
             type="password"
             placeholder="비밀번호"

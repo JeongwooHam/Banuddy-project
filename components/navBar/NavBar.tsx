@@ -46,7 +46,7 @@ const NavBarDefault = () => {
     <div className=" w-full	border flex justify-between items-center py-4 px-10 bg-gray-800 text-black">
       <div className="w-3/4 flex items-center">
         <div>
-          <Link href="/login">
+          <Link href="/main">
             <Image src={Banner} alt="Logo" className="w-[150px] h-10" />
           </Link>
         </div>

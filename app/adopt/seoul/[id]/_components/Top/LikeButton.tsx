@@ -9,7 +9,7 @@ const LikeButton: React.FC = () => {
   const [isLiked, setIsLiked] = React.useState(false)
 
   return (
-    <>
+    <div>
       <button
         className="w-[60px] h-[60px] border-solid border-[1px] border-primary-300 rounded-full"
         onClick={() => setIsLiked((prev) => !prev)}
@@ -20,7 +20,7 @@ const LikeButton: React.FC = () => {
           className="m-center"
         />
       </button>
-    </>
+    </div>
   )
 }
 

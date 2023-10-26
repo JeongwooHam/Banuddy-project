@@ -8,6 +8,7 @@ import FindAddress from '@/components/address/Address'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import '../style.css'
+import { useSearchParams } from 'next/navigation'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력하세요'),
@@ -45,6 +46,10 @@ const ApplicationForm: React.FC = () => {
   const [address, setAddress] = useState('')
   const [isCalendarOpen, setCalendarOpen] = useState(false)
 
+  const searchParams = useSearchParams()
+  const shelterName = searchParams.get('shelterName')
+  const shelterContact = searchParams.get('shelterContact')
+
   const {
     handleSubmit,
     control,
@@ -52,13 +57,19 @@ const ApplicationForm: React.FC = () => {
   } = useForm<ApplicationFormData>({
     resolver: yupResolver(schema) as any,
     // any 이유를 아직 모르겠음.
+    defaultValues: {
+      shelterName: shelterName || '',
+      shelterContact: shelterContact || '',
+    },
   })
 
   const toggleCalendar = () => {
-    console.log('clicked', '클릭함')
     setCalendarOpen((prevIsCalendarOpen) => !prevIsCalendarOpen)
   }
-  const onSubmit: SubmitHandler<ApplicationFormData> = (data) => {}
+  const onSubmit: SubmitHandler<ApplicationFormData> = (data, e) => {
+    e?.preventDefault()
+    console.log(data)
+  }
 
   return (
     <>
@@ -213,8 +224,29 @@ const ApplicationForm: React.FC = () => {
               <div className="flex flex mb-4">
                 <label className="label-application">집주소</label>
                 <div className="h-[50px] flex align-center text-center gap-2">
-                  <div>{address}</div>
-                  <FindAddress setter={setAddress} />
+                  <Controller
+                    name="address"
+                    control={control}
+                    render={({ field }) => (
+                      <div className="flex items-center gap-2">
+                        <input
+                          {...field}
+                          type="text"
+                          readOnly
+                          className={`input-application ${
+                            errors?.address ? 'border-red-500' : ''
+                          }`}
+                          value={address}
+                        />
+                        <FindAddress
+                          setter={(newAddress) => {
+                            setAddress(newAddress)
+                            field.onChange(newAddress)
+                          }}
+                        />
+                      </div>
+                    )}
+                  />
                 </div>
                 {errors?.address && (
                   <p className="text-red-500">{errors.address.message}</p>
@@ -336,23 +368,23 @@ const ApplicationForm: React.FC = () => {
                 />
               </div>
             </div>
+            <div className="flex flex-col text-center mt-[50px] mb-[30px] text-sm">
+              저희 페이지는 직접 보호소에 봉사 신청을 연결하지 않으며, 입력하신
+              개인정보는 저장되지 않습니다. <br /> 봉사활동에 관심이 있으신
+              분들은 위의 연락처를 통해 각 보호소의 웹사이트나 연락처로 직접
+              문의하시기 바랍니다. <br /> 유기동물에 관심을 가지고 소중한 시간을
+              내어주신 여러분들께 감사드립니다.
+            </div>
+            <button
+              className="submit-btn"
+              type="submit"
+              style={{ display: 'block', margin: '0 auto' }}
+            >
+              신청하기
+            </button>
           </form>
         </div>
       </div>
-      <div className="flex flex-col text-center mt-[50px] mb-[30px] text-sm">
-        저희 페이지는 직접 보호소에 봉사 신청을 연결하지 않으며, 입력하신
-        개인정보는 저장되지 않습니다. <br /> 봉사활동에 관심이 있으신 분들은
-        위의 연락처를 통해 각 보호소의 웹사이트나 연락처로 직접 문의하시기
-        바랍니다. <br /> 유기동물에 관심을 가지고 소중한 시간을 내어주신
-        여러분들께 감사드립니다.
-      </div>
-      <button
-        className="submit-btn "
-        type="submit"
-        style={{ display: 'block', margin: '0 auto' }}
-      >
-        신청하기
-      </button>
     </>
   )
 }

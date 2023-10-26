@@ -2,11 +2,11 @@ import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Image from 'next/image'
-import { url } from 'inspector'
+import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
+import OneSeoulAnimal from '@/app/adopt/seoul/_components/OneSeoulAnimal'
 
 interface DogCarouselProps {
-  content: React.ReactNode[]
+  content: mergedItem[]
 }
 
 const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
@@ -14,40 +14,31 @@ const DogCarousel: React.FC<DogCarouselProps> = ({ content }) => {
     dots: false,
     infinite: true,
     speed: 1500,
-    arrows: false,
+    arrows: true,
     slidesToShow: 4,
     slidesToScroll: 3,
     autoplay: false,
     autoplaySpeed: 4000,
-
-    nextArrow: (
-      <div>
-        <Image src="/icons/arrow-top-right.svg" alt="arrow-right" />
-      </div>
-    ),
-    prevArrow: (
-      <div>
-        <Image src="/icons/arrow-left.svg" alt="arrow-left" />
-      </div>
-    ),
   }
 
   return (
     <div
-      className="w-full"
+      className="w-full h-[300px] object-contain"
       style={{
-        height: '300px',
         backgroundImage: "url('/images/dogSlide.png')",
         backgroundRepeat: 'no-repeat',
-        objectFit: 'contain',
       }}
     >
-      <div className="w-[70%] pt-[30px] m-auto">
+      <div className="w-[90%] pt-[40px] m-auto object-fill">
         <Slider {...sliderSettings}>
-          {content.map((slideContent, index) => (
-            <div key={index}>
-              <div className="h-auto rounded pt-[25px] border-slate-200">
-                {slideContent}
+          {content.map((animalItem, index) => (
+            <div key={index} className="h-[200px] overflow-hidden">
+              <div className="transform scale-90">
+                <OneSeoulAnimal
+                  animal={animalItem.list}
+                  images={!!animalItem.photo && animalItem.photo}
+                  key={Math.random() * 1000}
+                />
               </div>
             </div>
           ))}

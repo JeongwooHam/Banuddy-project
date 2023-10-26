@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import AnimalDetail from './_components/Bottom/AnimalDetail'
 import AnimalPolaroid from './_components/Top/AnimalPolaroid'
 import AnimalInfoText from './_components/Top/AnimalInfoText'

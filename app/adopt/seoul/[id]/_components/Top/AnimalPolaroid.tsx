@@ -3,9 +3,8 @@ import ImageSlide from './ImageSlide'
 import Cat from '/public/icons/cat.svg'
 import { useAtom } from 'jotai'
 import { animalAtom } from '../../../_components/OneSeoulAnimal'
-import { mergedItem } from '../../../_components/SeoulAnimalList'
+import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 import State from '@/constants/adoptState'
-import { colorMatch } from '@/constants/colorMatch'
 
 const AnimalPolaroid: React.FC = () => {
   const [targetAnimal] = useAtom(animalAtom)

@@ -1,9 +1,9 @@
 import { useAtom } from 'jotai'
 import AnimalVideo from './AnimalVideo'
 import { animalAtom } from '../../../_components/OneSeoulAnimal'
-import { mergedItem } from '../../../_components/SeoulAnimalList'
 import { colorMatch } from '@/constants/colorMatch'
 import { stringToHTML } from '@/lib/stringToHtml'
+import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 
 interface animalProps {
   type: 'cat' | 'dog' | 'others'
@@ -22,7 +22,13 @@ const AnimalDetail: React.FC<animalProps> = ({ type }) => {
     return (
       <div className={dynamicClassName}>
         <div className="w-content m-center ">
-          {INTRCN_MVP_URL && <AnimalVideo src={youtube} />}
+          <div>
+            {INTRCN_MVP_URL && (
+              <div>
+                <AnimalVideo src={youtube} />
+              </div>
+            )}
+          </div>
           <div className="text-center m-[50px] leading-[3rem]">
             {stringToHTML(INTRCN_CN)}
           </div>
