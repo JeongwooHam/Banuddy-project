@@ -53,7 +53,13 @@ const OneShelter: React.FC<ShelterProps> = ({ shelter }) => {
               </div>
               <button
                 className="w-[131px] h-[44px] bg-slate-300 font-bold"
-                onClick={() => router.push(`/application/volunteer`)}
+                onClick={() =>
+                  router.push(
+                    `/application/volunteer?shelterName=${encodeURIComponent(
+                      careNm,
+                    )}&shelterContact=${encodeURIComponent(careTel)}`,
+                  )
+                }
               >
                 봉사 신청하기
               </button>

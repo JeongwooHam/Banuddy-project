@@ -8,6 +8,7 @@ import FindAddress from '@/components/address/Address'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import '../style.css'
+import { useSearchParams } from 'next/navigation'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력하세요'),
@@ -45,6 +46,10 @@ const ApplicationForm: React.FC = () => {
   const [address, setAddress] = useState('')
   const [isCalendarOpen, setCalendarOpen] = useState(false)
 
+  const searchParams = useSearchParams()
+  const shelterName = searchParams.get('shelterName')
+  const shelterContact = searchParams.get('shelterContact')
+
   const {
     handleSubmit,
     control,
@@ -52,6 +57,10 @@ const ApplicationForm: React.FC = () => {
   } = useForm<ApplicationFormData>({
     resolver: yupResolver(schema) as any,
     // any 이유를 아직 모르겠음.
+    defaultValues: {
+      shelterName: shelterName || '',
+      shelterContact: shelterContact || '',
+    },
   })
 
   const toggleCalendar = () => {
