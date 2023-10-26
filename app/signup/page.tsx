@@ -10,6 +10,7 @@ import Image from 'next/image'
 import Banner from '/public/assets/Banuddy.png'
 import { useRouter } from 'next/navigation'
 import BanuddyIconImage from '/public/images/signup-paw.png'
+import { supabase } from '@/supa-auth/lib/supabase'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력해주세요'),
@@ -65,7 +66,7 @@ export default function SignUp() {
     resolver: yupResolver(schema),
   })
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log('Form submitted:', data)
     if (
       !errors.name &&
@@ -74,9 +75,38 @@ export default function SignUp() {
       !errors.confirmPassword &&
       !errors.phoneNumber
     ) {
-      router.push('/main')
+      try {
+        const { data: signUpResponse, error } = await supabase.auth.signUp({
+          email: data.email,
+          password: data.password,
+          options: {
+            emailRedirectTo: 'http://localhost:3000/completeSignUp',
+            data: {
+              user_name: data.name,
+              user_phone_number: data.phoneNumber,
+            },
+          },
+        })
+        if (error) throw error
+        if (signUpResponse?.user) {
+          router.push('/login')
+        }
+      } catch (error) {
+        console.error('Error', error)
+      }
     }
   }
+
+  // const userVerify = async (data: { email: any; password: any }) => {
+  //   try {
+  //     const { data: signUpResponse, error } = await supabase.auth.signUp({
+  //       email: data.email,
+  //       password: data.password,
+  //     })
+  //   } catch (error) {
+  //     console.log('error', error)
+  //   }
+  // }
 
   return (
     <div className="w-content m-auto container-signUp">
@@ -127,6 +157,13 @@ export default function SignUp() {
           {errors.email && (
             <span className="input-error-message">{errors.email.message}</span>
           )}
+          {/* <button
+            onClick={() => {
+              userVerify
+            }}
+          >
+            본인인증받기
+          </button> */}
           <input
             type="password"
             placeholder="비밀번호"
