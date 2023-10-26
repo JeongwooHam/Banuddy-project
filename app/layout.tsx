@@ -1,4 +1,3 @@
-import AuthContext from '@/context/AuthContext'
 import './globals.css'
 import type { Metadata } from 'next'
 import Providers from '@/lib/providers'
@@ -16,11 +15,7 @@ export default function RootLayout({
   return (
     <html className="font-display">
       <body suppressHydrationWarning={true}>
-        <Providers>
-          <AuthContext>
-            {children}
-          </AuthContext>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

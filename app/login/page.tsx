@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Banner from '/public/assets/Banuddy.png'
 import LoginImage from '/public/images/login.png'
 import { useRouter } from 'next/navigation'
-import { signIn, useSession } from 'next-auth/react'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -16,23 +16,50 @@ export default function Login() {
   const [showAlert, setShowAlert] = useState(false)
   const [isLoggedInPopupVisible, setIsLoggedInPopupVisible] = useState(false)
   const router = useRouter()
-  const { status } = useSession()
+  const supabase = createClientComponentClient()
 
-  const handleLogin = () => {
-    if (!email || !password) {
-      setShowAlert(true)
+  const handleLogin = async () => {
+    if (email && password) {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      if (error) {
+        alert('아이디 혹은 패스워드를 다시 확인해주세요')
+      }
+      if (data) router.push('/main')
       return
     }
-    router.push('/main')
+  }
+
+  const handleGoogleLogin = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+    })
+    if (error) alert('로그인에 실패하였습니다.')
+    if (data) router.push('/main')
   }
 
   useEffect(() => {
-    setIsLoggedInPopupVisible(true)
-    setTimeout(() => {
-      setIsLoggedInPopupVisible(false)
-      router.push('/main')
-    }, 3000)
-  }, [status])
+    const checkUserSession = async () => {
+      const { data, error } = await supabase.auth.getUser()
+      console.log('userData', data)
+
+      if (data?.user) {
+        setIsLoggedInPopupVisible(true)
+        setTimeout(() => {
+          router.push('/main')
+        }, 3000)
+      }
+
+      if (error) {
+        console.error('Error session', error)
+        return
+      }
+    }
+
+    checkUserSession()
+  }, [])
 
   return (
     <>
@@ -71,7 +98,10 @@ export default function Login() {
               로그인
             </button>
             <Link href={'/'}>
-              <button className="google-btn" onClick={() => signIn()}>
+              <button
+                className="google-btn"
+                onClick={() => handleGoogleLogin()}
+              >
                 <Image
                   src={'/icons/g-logo.png'}
                   alt="google"
@@ -91,7 +121,7 @@ export default function Login() {
       {showAlert && (
         <div className="flex justify-center items-center text-center fixed rounded-2xl inset-0 bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded shadow-lg">
-            <p className="text-red-500">이메일과 비밀번호를 입력해주세요.</p>
+            <p className="text-red-500">환영합니다.</p>
             <button
               onClick={() => setShowAlert(false)}
               className="border mt-4 bg-gray-500 text-black py-1 px-4 rounded"
