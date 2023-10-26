@@ -48,7 +48,9 @@ const Main: React.FC = () => {
                 <Link href="/adopt/seoul">
                   <button className="styled-btn">입양 동물 소개</button>
                 </Link>
-                <button className="styled-btn">전국 입양 공고</button>
+                <Link href="/adopt/national">
+                  <button className="styled-btn">전국 입양 공고</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -63,8 +65,12 @@ const Main: React.FC = () => {
                 사랑과 온기를 전해주세요!
               </p>
               <div className="flex flex-col w-full">
-                <button className="styled-btn">보호소 확인하기</button>
-                <button className="styled-btn">봉사신청서 작성</button>
+                <Link href="/shelter">
+                  <button className="styled-btn">보호소 확인하기</button>
+                </Link>
+                <Link href="/application/volunteer">
+                  <button className="styled-btn">봉사신청서 작성</button>
+                </Link>
               </div>
             </div>
           </div>
