@@ -2,10 +2,11 @@ import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Image from 'next/image'
+import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
+import OneSeoulAnimal from '@/app/adopt/seoul/_components/OneSeoulAnimal'
 
 interface CatCarouselProps {
-  content: React.ReactNode[]
+  content: mergedItem[]
 }
 
 const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
@@ -13,22 +14,11 @@ const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
     dots: false,
     infinite: true,
     speed: 1500,
-    arrows: false,
+    arrows: true,
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: false,
     autoplaySpeed: 3500,
-
-    nextArrow: (
-      <div>
-        <Image src="/icons/arrow-top-right.svg" alt="arrow-right" />
-      </div>
-    ),
-    prevArrow: (
-      <div>
-        <Image src="/icons/arrow-left.svg" alt="arrow-left" />
-      </div>
-    ),
   }
 
   return (
@@ -41,12 +31,16 @@ const CatCarousel: React.FC<CatCarouselProps> = ({ content }) => {
         objectFit: 'cover',
       }}
     >
-      <div className="w-[70%] pt-[30px] m-auto align-center">
+      <div className="w-[90%] pt-[40px] m-auto object-fill">
         <Slider {...sliderSettings}>
-          {content.map((slideContent, index) => (
-            <div key={index}>
-              <div className="h-auto rounded pt-[25px] border-slate-200">
-                {slideContent}
+          {content.map((animalItem, index) => (
+            <div key={index} className="h-[200px] overflow-hidden">
+              <div className="transform scale-90">
+                <OneSeoulAnimal
+                  animal={animalItem.list}
+                  images={!!animalItem.photo && animalItem.photo}
+                  key={Math.random() * 1000}
+                />
               </div>
             </div>
           ))}

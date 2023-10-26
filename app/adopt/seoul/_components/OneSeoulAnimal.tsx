@@ -43,6 +43,7 @@ const OneSeoulAnimal: React.FC<animalProp> = ({ animal, images }) => {
                   alt="sample"
                   width="174"
                   height="188"
+                  style={{ height: '130px' }}
                 />
               </div>
               <div className="text-center">
