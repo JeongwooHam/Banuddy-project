@@ -1,8 +1,14 @@
+import { cookies } from 'next/headers'
 import Image from 'next/image'
 import NavBar from './_components/Nav'
 import background from '/public/images/myPageBackground.png'
 import NavBarDefault from '@/components/navBar/NavBar'
 import Footer from '@/components/footer/footer'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { Database } from '@/types/supabase'
+
+//cookies 쓰는 곳은 반드시 써줘야 함
+export const dynamic = 'force-dynamic'
 
 export default function MyPageLayout({
   children,
@@ -25,7 +31,7 @@ export default function MyPageLayout({
         </div>
         <div className="flex z-100 absolute h-[90%] mt-[40px] bg-white rounded pt-[50px] ">
           <div className="z-1 h-full">
-            <NavBar />
+            <NavBar nickname="" description="" />
           </div>
           <div className="z-100 w-[860px] pl-[30px]">{children}</div>
         </div>
