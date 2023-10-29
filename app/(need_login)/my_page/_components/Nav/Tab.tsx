@@ -17,9 +17,6 @@ const NavTabs: React.FC = () => {
       {navArray.map(({ id, key, value }) => (
         <li
           key={id}
-          onClick={() => {
-            setTarget(id)
-          }}
           className="cursor-pointer  py-[10px] font-bold"
           style={{ backgroundColor: target === id ? '#C3F6AB' : 'white' }}
         >

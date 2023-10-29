@@ -61,20 +61,14 @@ export default function SignUp() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   })
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log('Form submitted:', data)
-    if (
-      !errors.name &&
-      !errors.email &&
-      !errors.password &&
-      !errors.confirmPassword &&
-      !errors.phoneNumber
-    ) {
+    if (isValid) {
       try {
         const { data: signUpResponse, error } = await supabase.auth.signUp({
           email: data.email,
@@ -89,9 +83,7 @@ export default function SignUp() {
         })
         if (error) throw error
         if (signUpResponse?.user) {
-          alert(
-            '메일로 인증링크가 발송되었습니다. 해당 링크를 클릭하여 본인인증을 완료해주세요!',
-          )
+          alert('인증메일을 발송했습니다.')
           router.push('/login')
         }
       } catch (error) {
