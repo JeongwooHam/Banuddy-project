@@ -11,6 +11,7 @@ import Banner from '/public/assets/Banuddy.png'
 import { useRouter } from 'next/navigation'
 import BanuddyIconImage from '/public/images/signup-paw.png'
 import { supabase } from '@/supa-auth/lib/supabase'
+import { inputFields } from './inputFields'
 
 const schema = yup.object().shape({
   name: yup.string().required('이름을 입력해주세요'),
@@ -121,62 +122,22 @@ export default function SignUp() {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-4 w-1/2 "
         >
-          <input
-            type="text"
-            placeholder="이름"
-            {...register('name')}
-            onChange={(e) => handleInputChange(0, e.target.value)}
-            className="input-signup icon-input"
-          />
-          {errors.name && (
-            <span className="input-error-message">{errors.name.message}</span>
-          )}
-          <input
-            type="email"
-            placeholder="이메일"
-            {...register('email')}
-            onChange={(e) => handleInputChange(1, e.target.value)}
-            className="input-signup icon-input"
-          />
-          {errors.email && (
-            <span className="input-error-message">{errors.email.message}</span>
-          )}
-          <input
-            type="password"
-            placeholder="비밀번호"
-            {...register('password')}
-            onChange={(e) => handleInputChange(2, e.target.value)}
-            className="input-signup icon-input"
-          />
-          {errors.password && (
-            <span className="input-error-message">
-              {errors.password.message}
-            </span>
-          )}
-          <input
-            type="password"
-            placeholder="비밀번호 확인"
-            {...register('confirmPassword')}
-            onChange={(e) => handleInputChange(3, e.target.value)}
-            className="input-signup icon-input"
-          />
-          {errors.confirmPassword && (
-            <span className="input-error-message">
-              {errors.confirmPassword.message}
-            </span>
-          )}
-          <input
-            type="text"
-            placeholder="휴대폰번호"
-            {...register('phoneNumber')}
-            onChange={(e) => handleInputChange(4, e.target.value)}
-            className="input-signup icon-input"
-          />
-          {errors.phoneNumber && (
-            <span className="input-error-message">
-              {errors.phoneNumber.message}
-            </span>
-          )}
+          {inputFields.map((field) => (
+            <div key={field.name}>
+              <input
+                type={field.type}
+                placeholder={field.placeholder}
+                {...register(field.name)}
+                onChange={(e) => handleInputChange(field.index, e.target.value)}
+                className="input-signup icon-input"
+              />
+              {errors[field.name] && (
+                <span className="input-error-message">
+                  {field.errorMessage}
+                </span>
+              )}
+            </div>
+          ))}
           <button type="submit" className="submit-btn">
             가입하기
           </button>
