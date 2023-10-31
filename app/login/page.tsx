@@ -1,14 +1,23 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import './form.css'
 import Head from 'next/head'
 import Image from 'next/image'
+
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+
+import './form.css'
 import Banner from '/public/assets/Banuddy.png'
 import LoginImage from '/public/images/login.png'
-import { useRouter } from 'next/navigation'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+
+interface IFormInput {
+  email: string
+  password: string
+}
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -18,7 +27,15 @@ export default function Login() {
   const router = useRouter()
   const supabase = createClientComponentClient()
 
-  const handleLogin = async () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>()
+
+  const onSubmit = async (data: { email: string; password: string }) => {
+    const { email, password } = data
+
     if (email && password) {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
@@ -31,7 +48,6 @@ export default function Login() {
       return
     }
   }
-
   const handleGoogleLogin = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -78,44 +94,35 @@ export default function Login() {
             <Image src={Banner} alt="Logo" className="w-full h-10 " />
           </div>
 
-          <div className="flex flex-col gap-4">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-4"
+          >
             <input
+              {...register('email', { required: true })}
               type="text"
               placeholder="이메일을 입력해주세요"
               style={{ width: '250px', height: '40px' }}
               className="input-default"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
             />
+            {errors.email && (
+              <p className="text-red-500">이메일을 입력해주세요.</p>
+            )}
+
             <input
+              {...register('password', { required: true })}
               type="password"
               placeholder="비밀번호를 입력해주세요"
               className="input-default"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="submit-btn" onClick={handleLogin}>
+            {errors.password && (
+              <p className="text-red-500">비밀번호를 입력해주세요.</p>
+            )}
+
+            <button type="submit" className="submit-btn">
               로그인
             </button>
-            <Link href={'/'}>
-              <button
-                className="google-btn"
-                onClick={() => handleGoogleLogin()}
-              >
-                <Image
-                  src={'/icons/g-logo.png'}
-                  alt="google"
-                  width={30}
-                  height={18}
-                />
-                <span>구글로 로그인하기</span>
-              </button>
-            </Link>
-
-            <Link href="/signup" className="text-center">
-              <button className="signup-btn">회원가입 하러가기</button>
-            </Link>
-          </div>
+          </form>
         </div>
       </div>
       {showAlert && (
