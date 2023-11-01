@@ -7,8 +7,10 @@ const meta: Meta<typeof Pagination> = {
   component: Pagination,
   tags: ['autodocs'],
   argTypes: {
-    label: { control: 'text' },
-    onClick: { action: 'clicked' },
+    total: { control: 'number' },
+    currentPage: { control: 'number' },
+    limit: { control: 'number' },
+    handlePage: { action: 'pageChanged' },
   },
 }
 
@@ -18,6 +20,8 @@ type PaginationStory = StoryObj<typeof Pagination>
 
 export const PrimaryBtn: PaginationStory = {
   args: {
-    label: 'Primary Pagination',
+    total: 100,
+    currentPage: 1,
+    limit: 10,
   },
 }
