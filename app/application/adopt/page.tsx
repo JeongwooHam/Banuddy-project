@@ -97,7 +97,7 @@ const ApplicationForm: React.FC = () => {
             동물들에게 입양은 마지막 기회이자 유일한 희망입니다.
           </p>
         </div>
-        <div className="pl-[80px] ">
+        <div className="flex flex-col text-center items-center">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <h2 className="text-xl font-bold mb-2 pb-[20px] pt-[30px]">
@@ -332,10 +332,10 @@ const ApplicationForm: React.FC = () => {
               </div>
 
               <div className="flex flex-col mb-4">
-                <label className="label-application" style={{ width: '500px' }}>
+                <label className="label-application min-w-[250px]">
                   개인정보 수집 및 이용에 대한 동의
                 </label>
-                <div className="border rounded p-4 bg-white w-[600px] text-sm ml-[50px]">
+                <div className="border rounded p-4 bg-white w-[600px] text-sm ml-[100px]">
                   - 수집 목적: 반려동물 입양자에 대한 신원 확보 <br />
                   - 수집 항목: 성명, 주소, 연락처 및 반려동물 입양에 필요한 기본
                   정보 <br />- 보유 및 이용 기간: 1년 (해당 정보는 저장되어
@@ -343,7 +343,7 @@ const ApplicationForm: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center mb-4 ml-[50px]">
+              <div className="flex items-center mb-4 ml-[100px]">
                 <label className="pr-3">동의하겠습니까?</label>
                 <Controller
                   name="consentCheckbox"

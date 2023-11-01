@@ -43,7 +43,7 @@ export default function Landing() {
           </div>
         </div>
         <div className="absolute bottom-0 mb-2">
-          <Link href="/login">
+          <Link href="/main">
             <motion.div
               initial={{ y: 0 }}
               animate={{ y: [0, -10, 0] }}
