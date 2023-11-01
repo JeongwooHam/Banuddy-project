@@ -19,7 +19,7 @@ const AnimalList: React.FC = () => {
             ))}
           </div>
         </div>
-        <Pagination totalPages={5} currentPage={1} />
+        <Pagination total={5} currentPage={1} limit={1} />
       </div>
     </>
   )
