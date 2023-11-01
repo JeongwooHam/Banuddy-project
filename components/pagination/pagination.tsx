@@ -21,6 +21,8 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const [activePage, setActivePage] = useState(currentPage)
   const totalPage: number = Math.ceil(total / limit)
+//  const totalPage: number = Math.max(1, Math.ceil(total / limit))
+  if (totalPage <= 0) return null
 
   const handlePageClick = (page: number) => {
     setActivePage(page)
