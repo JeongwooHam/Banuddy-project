@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import Providers from '@/lib/providers'
+import Head from 'next/head'
 
 export const metadata: Metadata = {
   title: 'Banuddy',
@@ -14,6 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html className="font-display">
+      <Head>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
+      </Head>
       <body suppressHydrationWarning={true}>
         <Providers>{children}</Providers>
       </body>
