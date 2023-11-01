@@ -9,7 +9,7 @@ const meta: Meta<typeof Select> = {
   argTypes: {
     label: { control: 'text' },
     onClick: { action: 'clicked' },
-  },
+  } as any,
 }
 
 export default meta
@@ -19,5 +19,5 @@ type SelectStory = StoryObj<typeof Select>
 export const PrimaryBtn: SelectStory = {
   args: {
     label: 'Primary Select',
-  },
+  } as any,
 }

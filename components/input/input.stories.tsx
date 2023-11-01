@@ -9,7 +9,7 @@ const meta: Meta<typeof Input> = {
   argTypes: {
     label: { control: 'text' },
     onClick: { action: 'clicked' },
-  },
+  } as any,
 }
 
 export default meta
@@ -19,5 +19,5 @@ type InputStory = StoryObj<typeof Input>
 export const PrimaryInput: InputStory = {
   args: {
     label: 'Primary Button',
-  },
+  } as any,
 }
