@@ -9,7 +9,7 @@ const meta: Meta<typeof Card> = {
   argTypes: {
     label: { control: 'text' },
     onClick: { action: 'clicked' },
-  },
+  } as any,
 }
 
 export default meta
@@ -19,5 +19,5 @@ type CardStory = StoryObj<typeof Card>
 export const PrimaryCard: CardStory = {
   args: {
     label: 'Primary card',
-  },
+  } as any,
 }
