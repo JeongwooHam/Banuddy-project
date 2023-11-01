@@ -11,10 +11,10 @@ const ShelterFilter: React.FC = () => {
   return (
     <div className="bg-brown-100 w-content m-auto mt-[100px] rounded-[3px] p-7">
       <div className="flex ">
-        {filterForShelter.map(({ title, valueArray }) => (
+        {filterForShelter.map(({ title, itemArray }) => (
           <div className="mr-[30px]">
             <div className="text-base font-bold mb-2">{title}</div>
-            <CommonSelect selectValue={valueArray} />
+            {/* <CommonSelect selectValue={itemArray} /> */}
           </div>
         ))}
       </div>
