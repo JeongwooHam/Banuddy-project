@@ -22,7 +22,7 @@ export default function MyPageLayout({
           <Image
             src={background}
             alt="background"
-            layout="fill"
+            fill
             objectFit="cover"
             objectPosition="center"
           />

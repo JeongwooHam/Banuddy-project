@@ -3,8 +3,9 @@
 import OneCard from '@/components/card/card'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import type { Photo, Row, mergedItem } from '@/app/api/adopt/seoul/seoul.type'
-import { atom, useAtom } from 'jotai'
+import type { Photo, Row } from '@/app/api/adopt/seoul/seoul.type'
+import { useAtom } from 'jotai'
+import { Seoul } from '@/store'
 
 interface animalProp {
   key: number
@@ -12,13 +13,11 @@ interface animalProp {
   images: boolean | Photo[]
 }
 
-export const animalAtom = atom<mergedItem | object>({})
-
 const OneSeoulAnimal: React.FC<animalProp> = ({ animal, images }) => {
   const { ANIMAL_NO, NM, BREEDS, SEXDSTN, AGE } = animal
   const router = useRouter()
 
-  const [targetAnimal, setTargetAnimal] = useAtom(animalAtom)
+  const [targetAnimal, setTargetAnimal] = useAtom(Seoul.animalAtom)
 
   if (typeof images !== 'boolean')
     return (

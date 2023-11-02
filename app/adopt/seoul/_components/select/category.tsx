@@ -6,12 +6,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { atom, useAtom } from 'jotai'
-
-export const categoryAtom = atom('전체')
+import { useAtom } from 'jotai'
+import { Seoul } from '@/store'
 
 const CategorySelect = () => {
-  const [, setCategory] = useAtom(categoryAtom)
+  const [, setCategory] = useAtom(Seoul.categoryAtom)
 
   return (
     <Select onValueChange={(val) => setCategory(val)}>

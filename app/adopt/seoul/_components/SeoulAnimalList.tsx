@@ -3,18 +3,16 @@
 import Pagination from '@/components/pagination/pagination'
 import OneSeoulAnimal from './OneSeoulAnimal'
 import { getMergedData } from '@/app/api/adopt/seoul/seoul.api'
-import { useEffect, useState } from 'react'
-import { atom, useAtom } from 'jotai'
+import { useEffect } from 'react'
+import { useAtom, useAtomValue } from 'jotai'
 import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
-import SeoulAnimalFilter, { filterAtom } from './Filter'
-
-const dataAtom = atom<mergedItem[] | null>(null)
-const pageAtom = atom<number>(1)
+import SeoulAnimalFilter from './Filter'
+import { Seoul } from '@/store'
 
 const SeoulAnimalList: React.FC = () => {
-  const [data, setData] = useAtom(dataAtom)
-  const [page, setPage] = useAtom(pageAtom)
-  const [filterValue, setFilterValue] = useAtom(filterAtom)
+  const [data, setData] = useAtom(Seoul.dataAtom)
+  const [page, setPage] = useAtom(Seoul.pageAtom)
+  const filterValue = useAtomValue(Seoul.filterAtom)
 
   useEffect(() => {
     const prop = filterValue.isSubmit

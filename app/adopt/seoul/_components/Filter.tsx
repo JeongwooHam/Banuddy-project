@@ -1,24 +1,13 @@
-import CommonSelect from '@/components/select/select'
 import CustomInput from '@/components/input/input'
 import { Button } from '@/components/button/Button'
-import { adoptState, animalSex, fosterState } from '@/constants/filterValue'
-import { useState } from 'react'
-import CategorySelect, { categoryAtom } from './select/category'
-import { atom, useAtom, useAtomValue } from 'jotai'
-
-export const filterAtom = atom({
-  cate: '',
-  sex: '',
-  adopt: '',
-  foster: '',
-  name: '',
-  isSubmit: false,
-})
+import CategorySelect from './select/category'
+import { useAtomValue, useSetAtom } from 'jotai'
+import { Seoul } from '@/store'
 
 const SeoulAnimalFilter: React.FC = () => {
-  const [filterValue, setFilterValue] = useAtom(filterAtom)
+  const setFilterValue = useSetAtom(Seoul.filterAtom)
 
-  const cate = useAtomValue(categoryAtom)
+  const cate = useAtomValue(Seoul.categoryAtom)
 
   const handleFilter = () => {
     console.log('cate', cate)
