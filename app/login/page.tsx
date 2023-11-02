@@ -123,6 +123,24 @@ export default function Login() {
               로그인
             </button>
           </form>
+          <Link href={'/'}>
+            <button
+              className="google-btn mt-5"
+              onClick={() => handleGoogleLogin()}
+            >
+              <Image
+                src={'/icons/g-logo.png'}
+                alt="google"
+                width={30}
+                height={18}
+              />
+              <span className="pr-2">구글로 로그인하기</span>
+            </button>
+          </Link>
+
+          <Link href="/signup" className="text-center">
+            <button className="signup-btn mt-3">회원가입 하러가기</button>
+          </Link>
         </div>
       </div>
       {showAlert && (

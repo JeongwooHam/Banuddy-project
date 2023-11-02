@@ -75,7 +75,8 @@ export default function SignUp() {
           email: data.email,
           password: data.password,
           options: {
-            emailRedirectTo: 'http://localhost:3000/completeSignUp',
+            emailRedirectTo:
+              'http://banuddy-project-vlup.vercel.app/completeSignUp',
             data: {
               user_name: data.name,
               user_phone_number: data.phoneNumber,
