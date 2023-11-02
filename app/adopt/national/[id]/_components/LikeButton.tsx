@@ -5,7 +5,7 @@ import FillPaw from '/public/icons/paw-fill.svg'
 import EmptyPaw from '/public/icons/paw-empty.svg'
 import Image from 'next/image'
 
-const LikeButton: React.FC = () => {
+export const LikeButton: React.FC = () => {
   const [isLiked, setIsLiked] = React.useState(false)
 
   return (
@@ -23,5 +23,3 @@ const LikeButton: React.FC = () => {
     </>
   )
 }
-
-export default LikeButton

@@ -2,12 +2,21 @@
 
 import { National } from '@/store'
 import { useAtomValue } from 'jotai'
+import { AnimalDetail, AnimalInfoText, AnimalPolaroid } from './_components'
 
 const Detail: React.FC = () => {
   const targetAnimal = useAtomValue(National.animalAtom)
 
-  console.log('전국', targetAnimal)
-  return <div>전국 동물 공고 상세 페이지</div>
+  if (targetAnimal)
+    return (
+      <div>
+        <div className="flex justify-between w-content m-center my-[100px]">
+          <AnimalPolaroid />
+          <AnimalInfoText />
+        </div>
+        <AnimalDetail type="dog" />
+      </div>
+    )
 }
 
 export default Detail

@@ -1,18 +1,22 @@
 'use client'
 
-import { Button } from '@/components/button/Button'
-import LikeButton from './LikeButton'
 import { useRouter } from 'next/navigation'
+import { LikeButton } from '.'
+import { useAtomValue } from 'jotai'
+import { National } from '@/store'
 
-const AnimalInfoText: React.FC = () => {
+export const AnimalInfoText: React.FC = () => {
+  const { list } = useAtomValue(National.animalAtom)
+
   // 실제 데이터 들어오면 수정 및 타입 정의 필요
   const sampleInfo = [
-    { key: '종/품종', value: '고양이/메인쿤MIX' },
-    { key: '성별', value: '수컷' },
-    { key: '나이', value: '2세 0개월' },
-    { key: '체중', value: '4.78 kg' },
-    { key: '입소날짜', value: '2023.08.22' },
-    { key: '보호소명', value: '구로센터' },
+    { key: '공고기한', value: `${list.noticeSdt} - ${list.noticeEdt}` },
+    { key: '성별', value: `${list.sexCd === 'M' ? '수컷' : '암컷'}` },
+    { key: '나이', value: list.age },
+    { key: '체중', value: list.weight },
+    { key: '입소날짜', value: list.noticeSdt },
+    { key: '보호소명', value: list.careNm },
+    { key: '중성화여부', value: list.neuterYn },
   ]
 
   const router = useRouter()
@@ -20,7 +24,7 @@ const AnimalInfoText: React.FC = () => {
   return (
     <div className="w-[450px]">
       <div className="flex justify-between pb-[20px] border-b-[1px] border-gray-200">
-        <div className="text-[36px] font-bold">이름</div>
+        <div className="text-[36px] font-bold">{list.kindCd}</div>
         <LikeButton />
       </div>
       <div>
@@ -30,13 +34,6 @@ const AnimalInfoText: React.FC = () => {
             <div className="ml-[30px]">{value}</div>
           </div>
         ))}
-      </div>
-      <div className="text-[20px] mt-[27px]">
-        보호소에 입소한지{' '}
-        <span className="text-[25px] p-[10px] pl-[20px] pr-[20px] ml-[10px] mr-[10px] font-bold border-[3px] border-primary-300 rounded-2xl">
-          29일
-        </span>{' '}
-        되었어요.
       </div>
       <div>
         <button
@@ -49,5 +46,3 @@ const AnimalInfoText: React.FC = () => {
     </div>
   )
 }
-
-export default AnimalInfoText

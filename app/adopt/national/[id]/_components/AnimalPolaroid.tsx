@@ -1,27 +1,30 @@
 import Image from 'next/image'
-import ImageSlide from './ImageSlide'
-import Cat from '/public/icons/cat.svg'
+import { useAtomValue } from 'jotai'
+import { National } from '@/store'
 
-type animalProp = { name: string }
+export const AnimalPolaroid: React.FC = () => {
+  const { list } = useAtomValue(National.animalAtom)
 
-const AnimalPolaroid: React.FC<animalProp> = ({ name }) => {
-  return (
-    <div className="w-[500px] border-solid border-[1px] border-gray-100 shadow relative">
-      <ImageSlide />
-      <div className="absolute top-[80px] left-[90px] w-[70px] h-[70px] bg-primary-300 rounded-full p-[10px]">
-        <p className="w-[40px] ml-[5px] text-center">입양상태</p>
-      </div>
-      <div className="flex mt-[30px]">
-        <span>
-          <Image src={Cat} alt="cat" />
-        </span>
-        <div className="text-[24px] ml-[30px] text-center">
-          안녕하세요 저는 <span className="text-[40px] font-bold">{name}</span>
-          입니다.
+  const formattedDes = list?.specialMark
+    .split('.')
+    .map((text) => <div className="text-[20px] my-3">{text}</div>)
+
+  if (list)
+    return (
+      <div className="w-[420px] border-solid border-[1px] border-gray-100 shadow relative">
+        <Image
+          src={list.filename}
+          alt="공고 이미지"
+          width={350}
+          height={350}
+          className="m-auto mt-[30px]"
+        />
+        <div className="absolute top-[50px] left-[50px] w-[70px] h-[70px] bg-primary-300 rounded-full p-[10px] text-center leading-[50px]">
+          {list.processState}
+        </div>
+        <div className="m-auto text-center w-[360px] mt-[30px] mb-[30px]">
+          {formattedDes}
         </div>
       </div>
-    </div>
-  )
+    )
 }
-
-export default AnimalPolaroid
