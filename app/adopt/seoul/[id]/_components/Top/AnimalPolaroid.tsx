@@ -2,17 +2,15 @@ import Image from 'next/image'
 import ImageSlide from './ImageSlide'
 import Cat from '/public/icons/cat.svg'
 import { useAtom } from 'jotai'
-import { animalAtom } from '../../../_components/OneSeoulAnimal'
 import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 import State from '@/constants/adoptState'
+import { Seoul } from '@/store'
 
 const AnimalPolaroid: React.FC = () => {
-  const [targetAnimal] = useAtom(animalAtom)
+  const [targetAnimal] = useAtom(Seoul.animalAtom)
 
   if (targetAnimal) {
-    const target = targetAnimal as mergedItem
-
-    const { NM, ADP_STTUS } = target?.list
+    const { NM, ADP_STTUS } = targetAnimal.list
 
     const dynamicClassName = `absolute top-[80px] left-[90px] w-[75px] h-[75px] bg-primary-300 rounded-full p-[10px]`
     return (

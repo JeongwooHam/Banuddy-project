@@ -2,19 +2,18 @@
 
 import LikeButton from './LikeButton'
 import { useAtom } from 'jotai'
-import { animalAtom } from '../../../_components/OneSeoulAnimal'
 import AdmissionDate from './AdmissionDate'
 import InformationList from './InformationList'
 import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 import { useRouter } from 'next/navigation'
+import { Seoul } from '@/store'
 
 const AnimalInfoText: React.FC = () => {
-  const [targetAnimal] = useAtom(animalAtom)
+  const [targetAnimal] = useAtom(Seoul.animalAtom)
   const router = useRouter()
 
   if (targetAnimal) {
-    const target = targetAnimal as mergedItem
-    const { ENTRNC_DATE, NM, SPCS } = target.list
+    const { ENTRNC_DATE, NM, SPCS } = targetAnimal.list
 
     return (
       <div className="w-[450px]">
@@ -22,7 +21,7 @@ const AnimalInfoText: React.FC = () => {
           <div className="text-[36px] font-bold">{NM.split('(')[0]}</div>
           <LikeButton />
         </div>
-        <InformationList list={target.list} />
+        <InformationList list={targetAnimal.list} />
         <AdmissionDate date={ENTRNC_DATE} />
         <button
           onClick={() =>
