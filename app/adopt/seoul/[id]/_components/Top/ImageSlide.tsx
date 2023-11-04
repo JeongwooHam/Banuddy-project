@@ -6,8 +6,8 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
 import { useAtom } from 'jotai'
-import { animalAtom } from '../../../_components/OneSeoulAnimal'
 import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
+import { National } from '@/store'
 
 function ImageSlide() {
   const settings = {
@@ -18,10 +18,11 @@ function ImageSlide() {
     slidesToScroll: 1,
   }
 
+  const { animalAtom } = National
   const [targetAnimal] = useAtom(animalAtom)
 
   if (targetAnimal) {
-    const target = targetAnimal as mergedItem
+    const target = targetAnimal as unknown as mergedItem
     const { photo } = target
 
     return (

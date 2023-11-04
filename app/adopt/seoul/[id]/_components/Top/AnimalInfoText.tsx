@@ -2,18 +2,19 @@
 
 import LikeButton from './LikeButton'
 import { useAtom } from 'jotai'
-import { animalAtom } from '../../../_components/OneSeoulAnimal'
 import AdmissionDate from './AdmissionDate'
 import InformationList from './InformationList'
 import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
 import { useRouter } from 'next/navigation'
+import { National } from '@/store'
 
 const AnimalInfoText: React.FC = () => {
+  const { animalAtom } = National
   const [targetAnimal] = useAtom(animalAtom)
   const router = useRouter()
 
   if (targetAnimal) {
-    const target = targetAnimal as mergedItem
+    const target = targetAnimal as unknown as mergedItem
     const { ENTRNC_DATE, NM, SPCS } = target.list
 
     return (
