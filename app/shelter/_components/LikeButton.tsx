@@ -4,9 +4,11 @@ import React from 'react'
 import FillStar from '/public/icons/star-fill.svg'
 import EmptyStar from '/public/icons/star-empty.svg'
 import Image from 'next/image'
+import { useAtom } from 'jotai'
+import { Shelter } from '@/store'
 
 const LikeButton: React.FC = () => {
-  const [isLiked, setIsLiked] = React.useState(false)
+  const [isLiked, setIsLiked] = useAtom(Shelter.isLiked)
 
   return (
     <>

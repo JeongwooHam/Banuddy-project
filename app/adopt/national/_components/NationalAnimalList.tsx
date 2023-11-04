@@ -1,24 +1,15 @@
 'use client'
 
-import Pagination from '@/components/pagination/pagination'
-
-import { getMergedData } from '@/app/api/adopt/seoul/seoul.api'
-import { useEffect, useState } from 'react'
-import { atom, useAtom } from 'jotai'
-import { mergedItem } from '@/app/api/adopt/seoul/seoul.type'
+import { useEffect } from 'react'
+import { useAtom } from 'jotai'
 import OneNationalAnimal from './OneNationalAnimal'
 import { getAbandonmentPublic } from '@/app/api/adopt/national/national.api'
-import {
-  Body,
-  responseAbandonedPublic,
-} from '@/app/api/adopt/national/national.type'
-
-const dataAtom = atom<Body | null>(null)
-const pageAtom = atom<number>(1)
+import type { responseAbandonedPublic } from '@/app/api/adopt/national/national.type'
+import { National } from '@/store'
 
 const NationalAnimalList: React.FC = () => {
-  const [data, setData] = useAtom(dataAtom)
-  const [page, setPage] = useAtom(pageAtom)
+  const [data, setData] = useAtom(National.dataAtom)
+  const [page, setPage] = useAtom(National.pageAtom)
 
   useEffect(() => {
     // const prop = filterValue.isSubmit
