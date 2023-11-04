@@ -13,7 +13,7 @@ interface animalProp {
 }
 
 const OneNationalAnimal: React.FC<animalProp> = ({ animal }) => {
-  const { desertionNo, kindCd, sexCd, age, popfile } = animal
+  const { desertionNo, kindCd, sexCd, age, popfile } = animal.list
   const router = useRouter()
 
   const [targetAnimal, setTargetAnimal] = useAtom(National.animalAtom)
@@ -27,7 +27,6 @@ const OneNationalAnimal: React.FC<animalProp> = ({ animal }) => {
             setTargetAnimal({
               ...targetAnimal,
               animalNo: desertionNo,
-              list: animal,
             })
             router.push(`/adopt/national/${desertionNo + ''}`)
           }}
