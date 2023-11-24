@@ -10,7 +10,7 @@ const filterAtom = atom({
   name: '',
   isSubmit: false,
 })
-const animalAtom = atom<mergedItem | object>({})
+const animalAtom = atom<mergedItem>({} as mergedItem)
 const dataAtom = atom<mergedItem[] | null>(null)
 const pageAtom = atom<number>(1)
 
