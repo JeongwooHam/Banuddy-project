@@ -3,9 +3,9 @@
 import OneCard from '@/components/card/card'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import type { Photo, Row } from '@/app/api/adopt/seoul/seoul.type'
 import { useAtom } from 'jotai'
 import { Seoul } from '@/store'
+import { Photo, Row } from '@/app/pages/api/api-helper'
 
 interface animalProp {
   key: number
