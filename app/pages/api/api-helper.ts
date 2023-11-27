@@ -73,9 +73,10 @@ const API_BASE_URL = 'http://openapi.seoul.go.kr:8088'
 export const getSeoulAnimalList = async (
   start_index: number,
   end_index: number,
+  req: any, //임시
 ): Promise<responseList> => {
   const response = await fetch(
-    `${API_BASE_URL}/YOUR_LIST_KEY/json/TbAdpWaitAnimalView/${start_index}/${end_index}/`,
+    `https://${req.headers.host}/api/seoul-data-list/${start_index}/${end_index}`,
   )
   const data = await response.json()
   return data as responseList
@@ -84,9 +85,10 @@ export const getSeoulAnimalList = async (
 export const getSeoulAnimalImages = async (
   start_index: number,
   end_index: number,
+  req: any, // 임시
 ): Promise<responsePhoto> => {
   const response = await fetch(
-    `${API_BASE_URL}/YOUR_PHOTO_KEY/json/TbAdpWaitAnimalPhotoView/${start_index}/${end_index}`,
+    `https://${req.headers.host}/api/seoul-data-photo/${start_index}/${end_index}`,
   )
   const data = await response.json()
   return data as responsePhoto
