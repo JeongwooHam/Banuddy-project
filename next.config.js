@@ -7,14 +7,6 @@ const nextConfig = {
       destination: `http://openapi.seoul.go.kr:8088`,
     },
   ],
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: `/${process.env.NEXT_PUBLIC_SEOUL_LIST_KEY}/json/TbAdpWaitAnimalView/`,
-  //       destination: `http://openapi.seoul.go.kr:8088`,
-  //     },
-  //   ]
-  // },
   images: {
     remotePatterns: [
       {
@@ -24,7 +16,7 @@ const nextConfig = {
         pathname: '/comm/getImage/**',
       },
       {
-        protocol: 'http',
+        protocol: 'https',
         hostname: 'www.animal.go.kr',
         port: '',
         pathname: '/files/shelter/**',
